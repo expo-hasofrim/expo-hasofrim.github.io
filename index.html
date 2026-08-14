@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>אקספו הסופרים תשפ״ז · מדריך מידע ועסקים שנתי — מתחם הסופרים, בני ברק</title>
+<meta name="description" content="מדריך מידע ועסקים שנתי, מודפס ומהודר, שיופץ לכל בית בשכונת מתחם הסופרים בבני ברק. שריינו מקום לעסק שלכם במהדורת תשפ״ז — 050-4181682">
+<meta property="og:title" content="אקספו הסופרים תשפ״ז — מדריך מידע ועסקים שנתי | מתחם הסופרים, בני ברק">
+<meta property="og:description" content="מדריך מידע ועסקים שנתי, מודפס ומהודר, מופץ לכל בית בשכונה המתאכלסת. צד אחד — כל העסקים; הצד השני — כל המידע הקהילתי. הצטרפו למהדורת תשפ״ז.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="אקספו הסופרים">
+<meta property="og:url" content="https://expo-hasofrim.github.io/">
+<meta property="og:image" content="https://expo-hasofrim.github.io/assets/og.png">
+<meta property="og:image:alt" content="אקספו הסופרים תשפ״ז — מדריך מידע ועסקים שנתי למתחם הסופרים בבני ברק">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f7f4ef">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%23f7f4ef'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%236b4423' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='20.5' fill='none' stroke='%23B88E67' stroke-width='2' stroke-dasharray='2 4.6'/%3E%3Crect x='25.5' y='25.5' width='13' height='13' fill='%23324222' transform='rotate(45 32 32)'/%3E%3C/svg%3E">
+<script>document.documentElement.className='js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive:#324222;
+    --olive-deep:#1b260f;
+    --olive-soft:#46592f;
+    --bronze:#B88E67;
+    --bronze-light:#e8c9a2;
+    --bronze-dark:#9c7350;
+    --bronze-ink:#6b4423; /* AA-safe bronze for small text on cream (~7.7:1) */
+    --cream:#f7f4ef;
+    --paper:#fffdf9;
+    --ink:#26291f;
+    --gray:#5f6357;
+    --line:#e6e1d8;
+    --wa:#0f7a3d;        /* AA-safe WhatsApp green — white text ≈5.4:1 */
+    --wa-hover:#0b6231;
+    --frank:'Frank Ruhl Libre', 'David Libre', serif;
+    --heebo:'Heebo', 'Arial Hebrew', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion: no-preference){ html{scroll-behavior:smooth} }
+  body{
+    font-family:var(--heebo);
+    font-weight:400;
+    color:var(--ink);
+    background:#efeae1;
+    line-height:1.8;
+    overflow-x:clip;
+  }
+  img{max-width:100%;height:auto}
+  a{color:inherit}
+  ::selection{background:var(--bronze-light);color:var(--olive-deep)}
+  :focus-visible{outline:2px solid var(--bronze-ink);outline-offset:3px;border-radius:2px}
+
+  /* ---------- The sheet: the whole page is one printed leaf ---------- */
+  .sheet{
+    max-width:1280px;
+    margin-inline:auto;
+    background:var(--cream);
+    box-shadow:0 0 60px rgba(38,41,31,.08);
+    position:relative;
+  }
+  @media (min-width:1300px){
+    .sheet{border-inline:1px solid var(--line)}
+  }
+  .wrap{
+    max-width:1080px;
+    margin-inline:auto;
+    padding-inline:clamp(1.25rem, 5vw, 3rem);
+  }
+
+  h1,h2,h3{font-family:var(--frank);line-height:1.22;color:var(--ink);font-weight:700}
+
+  /* ---------- Masthead ---------- */
+  .masthead{
+    border-bottom:3px double var(--line);
+  }
+  .masthead .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:.2rem 1rem;
+    padding-block:.65rem;
+    font-size:.82rem;
+    color:var(--gray);
+    letter-spacing:.02em;
+  }
+  .masthead .bsd{font-weight:500;color:var(--bronze-ink)}
+  .masthead .brand{font-weight:500;color:var(--olive)}
+  @media (max-width:420px){
+    .masthead .wrap{justify-content:center;gap:.15rem .9rem;text-align:center}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    text-align:center;
+    padding-block:clamp(3.2rem,8vw,5.5rem) clamp(2.6rem,6vw,4rem);
+  }
+  /* crop marks — the "printed sheet" wink */
+  .crops i{position:absolute;width:1px;height:1px}
+  .crops i::before,.crops i::after{content:"";position:absolute;background:var(--bronze);opacity:.55}
+  .crops i::before{width:16px;height:1px}
+  .crops i::after{width:1px;height:16px}
+  .crops .tl{top:20px;left:20px}   .crops .tl::before{top:0;left:8px}   .crops .tl::after{top:8px;left:0}
+  .crops .tr{top:20px;right:20px}  .crops .tr::before{top:0;right:8px}  .crops .tr::after{top:8px;right:0}
+  .crops .bl{bottom:36px;left:20px}  .crops .bl::before{bottom:0;left:8px}  .crops .bl::after{bottom:8px;left:0}
+  .crops .br{bottom:36px;right:20px} .crops .br::before{bottom:0;right:8px} .crops .br::after{bottom:8px;right:0}
+
+  .seal{
+    width:clamp(96px,14vw,126px);
+    margin-inline:auto;
+    display:block;
+    transform:rotate(-5deg);
+    margin-bottom:clamp(1.2rem,3vw,2rem);
+  }
+  .seal text{font-family:var(--frank)}
+  .seal .s-small{font-family:var(--heebo);letter-spacing:.04em;font-weight:500}
+
+  .kicker{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-size:.85rem;font-weight:600;letter-spacing:.02em;
+    color:var(--bronze-ink);
+    margin-bottom:1.1rem;
+  }
+  .kicker::before,.kicker::after{content:"";height:1px;width:clamp(1.6rem,5vw,3rem);background:var(--bronze);opacity:.55}
+
+  .hero h1{
+    font-size:clamp(2.7rem, 8.5vw, 5.4rem);
+    font-weight:900;
+    line-height:1.08;
+    letter-spacing:-.01em;
+    color:var(--olive-deep);
+  }
+  .hero h1 .shana{
+    display:flex;align-items:center;justify-content:center;gap:1.1rem;
+    font-size:.42em;font-weight:500;letter-spacing:.02em;
+    color:var(--bronze-ink);
+    margin-top:.5rem;
+  }
+  .hero h1 .shana::before,.hero h1 .shana::after{content:"";height:1px;width:2.4rem;background:var(--bronze);opacity:.6}
+
+  .lede{
+    max-width:36rem;
+    margin:1.6rem auto 0;
+    font-size:clamp(1.05rem, 2.4vw, 1.2rem);
+    font-weight:400;
+    color:var(--ink);
+  }
+  .lede b{font-weight:600}
+
+  .cta-row{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:.9rem;
+    margin-top:2.2rem;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+    min-height:52px;
+    padding:.8rem 1.7rem;
+    border-radius:8px;
+    font-family:var(--heebo);
+    font-size:1.05rem;font-weight:600;
+    text-decoration:none;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn svg{flex:none}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(0)}
+  .btn-wa{
+    background:var(--wa);color:#fff;
+    box-shadow:0 10px 24px -12px rgba(15,122,61,.75);
+  }
+  .btn-wa:hover{background:var(--wa-hover)}
+  .btn-tel{
+    background:transparent;color:var(--olive-deep);
+    border:1.5px solid var(--olive);
+  }
+  .btn-tel:hover{background:rgba(50,66,34,.06)}
+  .btn .num{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums;letter-spacing:.03em}
+
+  /* ---------- Skyline strip ---------- */
+  .skyline{
+    display:block;width:100%;
+    height:clamp(44px, 8vw, 92px);
+    object-fit:cover;object-position:bottom;
+    opacity:.9;
+  }
+
+  /* ---------- Sections ---------- */
+  section.chapter{
+    border-top:1px solid var(--line);
+    padding-block:clamp(3.4rem, 8vw, 6rem);
+  }
+  .sec-head{
+    display:flex;align-items:flex-start;gap:clamp(.9rem,3vw,1.6rem);
+    margin-bottom:clamp(2rem,5vw,3rem);
+  }
+  .sec-no{
+    font-family:var(--frank);font-weight:700;
+    font-size:clamp(2.6rem, 6vw, 4rem);
+    line-height:.95;
+    color:var(--bronze-light);
+  }
+  .sec-kicker{
+    display:flex;align-items:center;gap:.8rem;
+    font-size:.8rem;font-weight:600;letter-spacing:.02em;
+    color:var(--bronze-ink);
+    margin-bottom:.4rem;
+  }
+  .sec-kicker::after{content:"";height:1px;width:2.6rem;background:var(--bronze);opacity:.5}
+  .sec-head h2{font-size:clamp(1.7rem, 3.6vw, 2.5rem);font-weight:700}
+
+  .prose p{max-width:38rem}
+  .prose p + p{margin-top:1rem}
+  .accent{color:var(--olive);font-weight:600}
+
+  /* ---------- א׳ · neighborhood ---------- */
+  .split{
+    display:grid;grid-template-columns:1.05fr .95fr;
+    gap:clamp(2rem,5vw,4rem);
+    align-items:center;
+  }
+  .plate{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:12px;
+    box-shadow:0 18px 40px -22px rgba(38,41,31,.35);
+  }
+  .plate img{display:block;width:100%;border:1px solid var(--line)}
+  .plate figcaption{
+    display:flex;align-items:center;gap:.6rem;
+    padding:.75rem .2rem .15rem;
+    font-size:.85rem;color:var(--gray);
+  }
+  .plate figcaption::before{content:"";width:22px;height:1px;background:var(--bronze)}
+
+  /* growth axis — three numbered chapters on a layout rule (transplanted from C, set in A's type) */
+  .growth{
+    margin-top:clamp(2.6rem,6vw,3.8rem);
+    position:relative;
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:clamp(1.2rem,4vw,2.6rem);
+  }
+  .growth::before{
+    content:"";position:absolute;top:15px;inset-inline:calc(100% / 6);
+    border-top:1px solid var(--bronze);opacity:.5;
+  }
+  .stage{position:relative;text-align:center}
+  .growth dt{
+    display:flex;flex-direction:column;align-items:center;gap:.55rem;
+    font-size:.8rem;font-weight:600;letter-spacing:.02em;
+    color:var(--bronze-ink);
+  }
+  /* stage letter — deliberately NOT a circle, so it never reads as a folio number */
+  .fol{
+    height:30px;
+    padding-inline:.7rem;
+    background:var(--cream);   /* masks the layout rule behind it */
+    display:grid;place-items:center;
+    font-family:var(--frank);font-weight:700;font-size:1.05rem;
+    color:var(--bronze-ink);
+    position:relative;z-index:1;
+  }
+  .g-art{
+    width:min(140px,62%);height:auto;display:block;
+    margin:.9rem auto .6rem;
+  }
+  .g-art .bld{fill:var(--olive-soft)}
+  .g-art .win{fill:var(--bronze-light)}
+  .g-art .crane{stroke:var(--bronze);stroke-width:3;fill:none;stroke-linecap:round}
+  .g-art .load{fill:var(--bronze)}
+  .g-num{
+    display:block;
+    font-family:var(--frank);font-weight:900;
+    font-size:clamp(1.9rem, 4.6vw, 3rem);
+    line-height:1.15;
+    color:var(--olive);
+  }
+  .g-num .digits{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+  .g-sub{
+    font-size:.88rem;font-weight:500;color:var(--gray);
+    margin-top:.2rem;
+  }
+  @media (max-width:700px){
+    .growth{grid-template-columns:1fr;gap:0}
+    .growth::before{display:none}
+    .stage + .stage{border-top:1px dotted #c8c1b2;padding-top:1.5rem;margin-top:1.5rem}
+    .g-art{width:min(120px,50%)}
+  }
+
+  /* ---------- ב׳ · opportunity ---------- */
+  .opp{
+    display:grid;grid-template-columns:1.05fr .95fr;
+    gap:clamp(2rem,5vw,4rem);
+    align-items:center;
+  }
+  .budget-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    outline:1px solid var(--line);
+    outline-offset:6px;
+    padding:clamp(1.8rem,4vw,2.6rem) 1.4rem;
+    text-align:center;
+    margin:8px; /* room for the outline */
+  }
+  .budget-card .label{
+    font-size:.85rem;font-weight:600;letter-spacing:.02em;
+    color:var(--bronze-ink);
+  }
+  .budget-card .figure{
+    font-family:var(--frank);font-weight:900;
+    font-size:clamp(3.2rem, 8vw, 4.8rem);
+    line-height:1.05;
+    color:var(--olive-deep);
+    direction:ltr;unicode-bidi:isolate;
+    font-variant-numeric:tabular-nums;
+    margin-top:.5rem;
+  }
+  .budget-card .unit{
+    font-family:var(--frank);font-weight:500;
+    font-size:clamp(1.15rem,2.6vw,1.5rem);
+    color:var(--bronze-ink);
+  }
+  .budget-card .cap{
+    margin-top:.7rem;
+    font-size:.9rem;color:var(--gray);
+  }
+
+  /* ---------- ג׳ · index list ---------- */
+  .index-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));
+    column-gap:clamp(1.6rem,4vw,3.2rem);
+    row-gap:.35rem;
+  }
+  .index-list li{
+    display:flex;align-items:baseline;gap:.6rem;
+    font-size:1.03rem;font-weight:500;
+    padding-block:.42rem;
+  }
+  .index-list .dots{
+    flex:1;
+    border-bottom:1px dotted #c8c1b2;
+    transform:translateY(-5px);
+    min-width:1.2rem;
+  }
+  .index-list .mark{color:var(--bronze);font-size:.55rem;line-height:1}
+  .index-list .more{color:var(--bronze-ink);font-weight:600}
+
+  .callout{
+    margin-top:clamp(2.2rem,5vw,3.2rem);
+    position:relative;
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:clamp(1.5rem,4vw,2rem) clamp(1.5rem,4vw,2.2rem);
+    max-width:44rem;
+  }
+  .callout::before{
+    content:"";position:absolute;top:-1px;inset-inline-start:-1px;
+    width:30px;height:30px;
+    border-top:2px solid var(--bronze);
+    border-inline-start:2px solid var(--bronze);
+  }
+  .callout h3{font-size:1.25rem;margin-bottom:.4rem;color:var(--olive)}
+  .callout p{color:var(--ink)}
+
+  /* ---------- ד׳ · the spread (two facing pages) ---------- */
+  .spread-intro{max-width:40rem;margin-bottom:clamp(2rem,5vw,3rem)}
+  .spread{
+    position:relative;
+    display:grid;grid-template-columns:1fr 1fr;
+    background:var(--paper);
+    border:1px solid var(--line);
+    box-shadow:0 24px 50px -30px rgba(38,41,31,.35);
+  }
+  .spread::before{ /* the gutter shadow between the two pages */
+    content:"";position:absolute;top:0;bottom:0;left:50%;
+    width:64px;margin-left:-32px;
+    background:linear-gradient(90deg, transparent, rgba(38,41,31,.07) 38%, rgba(38,41,31,.14) 50%, rgba(38,41,31,.07) 62%, transparent);
+    pointer-events:none;
+  }
+  .page{
+    position:relative;
+    padding:clamp(1.8rem,4.5vw,3rem);
+  }
+  .page::after{ /* folio letter in the outer corner */
+    content:attr(data-folio);
+    position:absolute;top:1.1rem;
+    width:32px;height:32px;
+    border:1px solid var(--bronze-light);
+    border-radius:50%;
+    display:grid;place-items:center;
+    font-family:var(--frank);font-weight:700;font-size:.9rem;
+    color:var(--bronze-ink);
+  }
+  .page:first-of-type::after{inset-inline-start:1.1rem}
+  .page:last-of-type::after{inset-inline-end:1.1rem}
+  .page .pg-kicker{
+    display:block;
+    font-size:.78rem;font-weight:600;letter-spacing:.02em;
+    color:var(--bronze-ink);
+    margin-bottom:.35rem;
+  }
+  .page h3{font-size:clamp(1.35rem,2.8vw,1.7rem);margin-bottom:.8rem}
+  .page p{color:var(--ink);max-width:26rem}
+  .page ul{list-style:none;margin-top:1rem}
+  .page ul li{display:flex;align-items:baseline;gap:.65rem;padding-block:.34rem}
+  .page ul li::before{content:"◆";color:var(--bronze);font-size:.5rem;line-height:1;flex:none}
+  .page .pg-cap{ /* closing caption — balances the two facing pages */
+    display:flex;align-items:baseline;gap:.6rem;
+    margin-top:1.2rem;
+    font-size:.85rem;color:var(--gray);max-width:26rem;
+  }
+  .page .pg-cap::before{content:"";flex:none;width:22px;height:1px;background:var(--bronze);transform:translateY(-.35em)}
+
+  /* greeked type rows + "your business" highlight (transplanted from B, set in A's print language) */
+  .rows{
+    display:flex;flex-direction:column;gap:9px;
+    margin-top:1.3rem;max-width:24rem;
+  }
+  .row{height:9px;background:var(--line)}
+  .row.w85{width:85%}.row.w70{width:70%}.row.w60{width:60%}
+  .row-you{
+    display:flex;align-items:center;justify-content:space-between;gap:.6rem;
+    background:var(--paper);
+    border:1px solid var(--bronze);
+    box-shadow:-3px 3px 0 var(--bronze-light);
+    padding:.55rem .9rem;
+    font-weight:600;font-size:.98rem;color:var(--olive-deep);
+  }
+  .row-you .dmark{color:var(--bronze);font-size:.55rem;line-height:1}
+
+  /* dateline — the colophon line under the spread */
+  .dateline{
+    margin-top:clamp(1.4rem,3vw,2rem);
+    padding-top:1rem;
+    border-top:1px dotted #c8c1b2;
+    max-width:44rem;
+    font-size:.95rem;color:var(--gray);
+  }
+  .dateline .dl-label{
+    font-size:.78rem;font-weight:600;letter-spacing:.02em;
+    color:var(--bronze-ink);
+    margin-inline-end:.55rem;
+  }
+  .dateline b{font-weight:600;color:var(--olive)}
+
+  /* ---------- ה׳ · join (dark band) ---------- */
+  .join{
+    background:var(--olive-deep);
+    color:var(--cream);
+    text-align:center;
+    padding-block:clamp(3.6rem,9vw,6rem);
+    border-top:1px solid rgba(232,201,162,.35);
+  }
+  .join .sec-kicker{color:var(--bronze-light);justify-content:center}
+  .join .sec-kicker::after{display:none}
+  .join .sec-kicker::before{content:"";height:1px;width:2.6rem;background:var(--bronze-light);opacity:.5}
+  .join h2{
+    color:var(--cream);
+    font-size:clamp(2rem,5vw,3.2rem);font-weight:900;
+    max-width:24ch;margin-inline:auto;
+  }
+  .join .prose{max-width:34rem;margin:1.2rem auto 0;color:rgba(247,244,239,.88);font-weight:400}
+  .join .prose p{margin-inline:auto}
+  .punch{
+    font-family:var(--frank);font-weight:700;
+    font-size:clamp(1.5rem,3.4vw,2.15rem);
+    color:var(--bronze-light);
+    margin-top:1.8rem;
+    display:flex;align-items:center;justify-content:center;gap:1.1rem;
+  }
+  .punch::before,.punch::after{content:"";height:1px;width:clamp(1.4rem,4vw,2.6rem);background:var(--bronze);opacity:.7}
+  /* the whole sentence is ONE flex item — otherwise the gap splits it mid-phrase */
+  .punch-line{flex:0 1 auto;text-align:center}
+  /* hand-drawn underline (transplanted from C) */
+  .uline{position:relative;display:inline-block}
+  .uline svg{
+    position:absolute;inset-inline:0;bottom:-.42em;
+    width:100%;height:.5em;
+  }
+  .uline path{stroke:var(--bronze)}
+  .join .cta-row{margin-top:2.4rem}
+  .join .btn-tel{color:var(--cream);border-color:rgba(232,201,162,.6)}
+  .join .btn-tel:hover{background:rgba(232,201,162,.1)}
+  /* secondary channel — kept quieter than the phone / WhatsApp */
+  .alt-contact{
+    margin-top:1.2rem;
+    font-size:.95rem;
+    color:rgba(247,244,239,.78);
+  }
+  .alt-contact a{
+    color:var(--bronze-light);text-decoration:none;
+    border-bottom:1px solid rgba(232,201,162,.4);padding-bottom:1px;
+    direction:ltr;unicode-bidi:isolate;
+  }
+  .alt-contact a:hover{border-bottom-color:var(--bronze-light)}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--olive-deep);
+    color:rgba(247,244,239,.62);
+    border-top:1px solid rgba(247,244,239,.14);
+    text-align:center;
+    padding:2.4rem 1.5rem calc(2.4rem + 86px); /* clearance for the call bar */
+    font-size:.9rem;
+  }
+  footer .logo{height:36px;width:auto;margin-bottom:1.1rem}
+  footer p + p{margin-top:.3rem}
+  footer a{color:var(--bronze-light);text-decoration:none;border-bottom:1px solid rgba(232,201,162,.4);padding-bottom:1px}
+  footer a:hover{border-bottom-color:var(--bronze-light)}
+  footer a.ltr{direction:ltr;unicode-bidi:isolate}
+
+  /* ---------- Sticky call bar ---------- */
+  .callbar{
+    position:fixed;bottom:0;inset-inline:0;z-index:50;
+    background:rgba(247,244,239,.96);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+    border-top:1px solid var(--line);
+    box-shadow:0 -10px 30px rgba(38,41,31,.12);
+    padding:.6rem .9rem calc(.6rem + env(safe-area-inset-bottom));
+    transform:translateY(105%);
+    visibility:hidden;
+    transition:transform .35s ease, visibility .35s;
+  }
+  .callbar.on{transform:translateY(0);visibility:visible}
+  html:not(.js) .callbar{transform:none;visibility:visible}
+  .callbar-inner{
+    max-width:620px;margin-inline:auto;
+    display:flex;gap:.7rem;
+  }
+  .callbar .btn{flex:1;min-height:50px;padding:.6rem .9rem;font-size:1rem}
+  @media print{.callbar{display:none}}
+
+  /* ---------- Reveal ---------- */
+  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease, transform .7s ease}
+  .js .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    .js .reveal{opacity:1;transform:none;transition:none}
+    .btn,.callbar{transition:none}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:880px){
+    .split,.opp{grid-template-columns:1fr}
+    .opp .budget-card{order:2}
+  }
+  @media (max-width:700px){
+    .spread{grid-template-columns:1fr}
+    .spread::before{display:none}
+    .page + .page{border-top:1px solid var(--line)}
+    .page:last-of-type::after{inset-inline-end:auto;inset-inline-start:1.1rem}
+  }
+  @media (max-width:560px){
+    .cta-row .btn{flex:1 1 100%;max-width:340px}
+    .crops .bl,.crops .br{display:none}
+    /* give the punch line room so the sentence stays on one line */
+    .punch{gap:.6rem}
+    .punch::before,.punch::after{width:1.1rem}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- masthead -->
+  <header class="masthead">
+    <div class="wrap">
+      <span class="bsd">בס״ד</span>
+      <span class="brand">מבית פוקוס נדל״ן</span>
+      <span>מתחם הסופרים · בני ברק</span>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="crops" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+    <div class="wrap">
+
+      <svg class="seal" viewBox="0 0 140 140" aria-hidden="true">
+        <circle cx="70" cy="70" r="66" fill="none" stroke="#6b4423" stroke-width="1.5"/>
+        <circle cx="70" cy="70" r="57" fill="none" stroke="#B88E67" stroke-width="1" stroke-dasharray="1 3.5"/>
+        <path d="M70 8 l3.2 4.5 -3.2 4.5 -3.2 -4.5z" fill="#B88E67"/>
+        <path d="M70 123 l3.2 4.5 -3.2 4.5 -3.2 -4.5z" fill="#B88E67"/>
+        <path d="M8 70 l4.5 -3.2 4.5 3.2 -4.5 3.2z" fill="#B88E67"/>
+        <path d="M123 70 l4.5 -3.2 4.5 3.2 -4.5 3.2z" fill="#B88E67"/>
+        <text x="70" y="52" text-anchor="middle" class="s-small" font-size="11" fill="#6b4423">מהדורת</text>
+        <text x="70" y="87" text-anchor="middle" font-size="32" font-weight="700" fill="#324222">תשפ״ז</text>
+        <text x="70" y="106" text-anchor="middle" class="s-small" font-size="10" fill="#6b4423">בני ברק</text>
+      </svg>
+
+      <p class="kicker">מדריך מודפס · מופץ לכל בית בשכונה</p>
+
+      <h1>
+        אקספו הסופרים
+        <span class="shana">מדריך מידע ועסקים שנתי · תשפ״ז</span>
+      </h1>
+
+      <p class="lede">המדריך השנתי המהודר של <b>״מתחם הסופרים״</b> בבני ברק — מודפס, מופץ פרטנית לכל בית ועסק, ונשאר בבית כל השנה.</p>
+
+      <div class="cta-row" id="hero-cta">
+        <a class="btn btn-wa" href="https://wa.me/972504181682?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%A1%D7%95%D7%9D%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.65 15.02L2 22l5.13-1.32A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.19 15.25l-.3-.18-3.04.78.8-2.96-.2-.31A8.2 8.2 0 0 1 12 3.8zm-3.1 3.72c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.07 3.3 5.12 4.5 2.53 1 3.05.8 3.6.75.55-.05 1.77-.72 2.02-1.43.25-.7.25-1.3.17-1.43-.07-.12-.27-.2-.57-.35-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.9-.79-1.5-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.66-1.62-.92-2.21-.24-.58-.49-.5-.67-.5h-.6z"/></svg>
+          שריינו מקום במדריך
+        </a>
+        <a class="btn btn-tel" href="tel:+972504181682">
+          <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <span class="num">050-4181682</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <img class="skyline" src="assets/fokus-hero-skyline.svg" alt="" aria-hidden="true">
+
+  <main>
+
+    <!-- א׳ · the neighborhood -->
+    <section class="chapter" aria-labelledby="h-neighborhood">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-no" aria-hidden="true">א׳</span>
+          <div>
+            <span class="sec-kicker">השכונה</span>
+            <h2 id="h-neighborhood">שכונה חדשה על גדות הירקון</h2>
+          </div>
+        </header>
+
+        <div class="split">
+          <div class="prose reveal">
+            <p>״מתחם הסופרים״ — שכונה חדשה ויפיפייה בצפון בני ברק, על גדות הירקון ובסמוך לפארקי ענק ירוקים.</p>
+            <p>השכונה מתאכלסת מדי יום, והקהילה הולכת ונבנית — <span class="accent">בית אחר בית, משפחה אחר משפחה.</span></p>
+          </div>
+          <figure class="plate reveal">
+            <img src="assets/fokus-hero-v2.webp" alt="קו הרקיע של מתחם הסופרים בשעת שקיעה" width="1200" loading="lazy">
+            <figcaption>על גדות הירקון · צפון בני ברק</figcaption>
+          </figure>
+        </div>
+
+        <dl class="growth reveal">
+          <div class="stage">
+            <dt><span class="fol" aria-hidden="true">א׳</span>היום</dt>
+            <dd>
+              <svg class="g-art" viewBox="0 0 140 90" aria-hidden="true">
+                <g class="bld">
+                  <rect x="34" y="48" width="24" height="42" rx="2"/>
+                  <rect x="64" y="36" width="28" height="54" rx="2"/>
+                  <rect x="98" y="58" width="18" height="32" rx="2"/>
+                </g>
+                <g class="win">
+                  <rect x="70" y="44" width="5" height="7"/><rect x="81" y="44" width="5" height="7"/>
+                  <rect x="70" y="58" width="5" height="7"/><rect x="81" y="58" width="5" height="7"/>
+                  <rect x="40" y="56" width="5" height="7"/><rect x="49" y="56" width="5" height="7"/>
+                  <rect x="40" y="70" width="5" height="7"/>
+                </g>
+              </svg>
+              <span class="g-num">כ־<span class="digits">1,500</span></span>
+            </dd>
+            <dd class="g-sub">תושבים כבר גרים בשכונה</dd>
+          </div>
+
+          <div class="stage">
+            <dt><span class="fol" aria-hidden="true">ב׳</span>השנה הקרובה</dt>
+            <dd>
+              <svg class="g-art" viewBox="0 0 140 90" aria-hidden="true">
+                <g class="crane">
+                  <line x1="24" y1="90" x2="24" y2="16"/>
+                  <line x1="6" y1="22" x2="62" y2="22"/>
+                  <line x1="24" y1="16" x2="6" y2="22"/>
+                  <line x1="24" y1="16" x2="46" y2="22"/>
+                  <line x1="52" y1="22" x2="52" y2="36"/>
+                </g>
+                <rect class="load" x="47" y="36" width="10" height="7" rx="1"/>
+                <g class="bld">
+                  <rect x="62" y="40" width="22" height="50" rx="2"/>
+                  <rect x="90" y="26" width="26" height="64" rx="2"/>
+                  <rect x="122" y="52" width="14" height="38" rx="2"/>
+                </g>
+                <g class="win">
+                  <rect x="96" y="34" width="5" height="7"/><rect x="106" y="34" width="5" height="7"/>
+                  <rect x="96" y="48" width="5" height="7"/><rect x="106" y="48" width="5" height="7"/>
+                  <rect x="68" y="48" width="5" height="7"/><rect x="76" y="48" width="5" height="7"/>
+                  <rect x="68" y="62" width="5" height="7"/><rect x="106" y="62" width="5" height="7"/>
+                </g>
+              </svg>
+              <span class="g-num">מאות</span>
+            </dd>
+            <dd class="g-sub">משפחות נוספות נכנסות לדירות</dd>
+          </div>
+
+          <div class="stage">
+            <dt><span class="fol" aria-hidden="true">ג׳</span>התוכנית המלאה</dt>
+            <dd>
+              <svg class="g-art" viewBox="0 0 140 90" aria-hidden="true">
+                <g class="bld">
+                  <rect x="4" y="46" width="18" height="44" rx="2"/>
+                  <rect x="26" y="30" width="22" height="60" rx="2"/>
+                  <rect x="52" y="14" width="26" height="76" rx="2"/>
+                  <rect x="82" y="26" width="24" height="64" rx="2"/>
+                  <rect x="110" y="40" width="26" height="50" rx="2"/>
+                </g>
+                <g class="win">
+                  <rect x="58" y="22" width="5" height="7"/><rect x="68" y="22" width="5" height="7"/>
+                  <rect x="58" y="36" width="5" height="7"/><rect x="68" y="36" width="5" height="7"/>
+                  <rect x="58" y="50" width="5" height="7"/><rect x="68" y="64" width="5" height="7"/>
+                  <rect x="32" y="38" width="5" height="7"/><rect x="40" y="38" width="5" height="7"/>
+                  <rect x="32" y="52" width="5" height="7"/><rect x="40" y="66" width="5" height="7"/>
+                  <rect x="88" y="34" width="5" height="7"/><rect x="97" y="34" width="5" height="7"/>
+                  <rect x="88" y="48" width="5" height="7"/><rect x="97" y="62" width="5" height="7"/>
+                  <rect x="9" y="54" width="5" height="7"/><rect x="9" y="68" width="5" height="7"/>
+                  <rect x="116" y="48" width="5" height="7"/><rect x="125" y="48" width="5" height="7"/>
+                  <rect x="116" y="62" width="5" height="7"/>
+                </g>
+              </svg>
+              <span class="g-num"><span class="digits">20,000</span></span>
+            </dd>
+            <dd class="g-sub">נפשות · <span class="digits">3,000</span> משפחות</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ב׳ · the opportunity -->
+    <section class="chapter" aria-labelledby="h-opportunity">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-no" aria-hidden="true">ב׳</span>
+          <div>
+            <span class="sec-kicker">ההזדמנות</span>
+            <h2 id="h-opportunity">השכונה מתאכלסת מדי יום</h2>
+          </div>
+        </header>
+
+        <div class="opp">
+          <div class="prose reveal">
+            <p>מאות משפחות נוספות צפויות להיכנס לשכונה בשנה הקרובה בלבד.</p>
+            <p>כל משפחה נכנסת מתקצבת סכום משמעותי להשלמת הכניסה לדירה — <span class="accent">שוק עסקי חם</span> שמחפש עכשיו את נותני השירות שלו.</p>
+          </div>
+          <div class="budget-card reveal">
+            <p class="label">תקציב השלמת כניסה לדירה, למשפחה</p>
+            <p class="figure">100–280<span class="unit"> אלף ₪</span></p>
+            <p class="cap">לכל משפחה נכנסת, בשנה הראשונה לאכלוס</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ג׳ · who is it for -->
+    <section class="chapter" aria-labelledby="h-forwho">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-no" aria-hidden="true">ג׳</span>
+          <div>
+            <span class="sec-kicker">למי זה מתאים</span>
+            <h2 id="h-forwho">מפתח העניינים של המדריך</h2>
+          </div>
+        </header>
+
+        <ul class="index-list reveal">
+          <li><span>מתווכים ויזמים</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>שיפוצים וצבע</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>אדריכלות ועיצוב פנים</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>הובלות ומנופים</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>ניקוי דירות</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>טפטים וחיפויי קירות</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>תאורה ומיזוג</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>מיגון ואבטחה</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>תריסים ורשתות</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>ספקי תקשורת</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>מטבחים וארונות</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>דלתות ורהיטים</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>אביזרי בית וגינה</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>ניהול בניינים</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span>איטום ובידוד</span><span class="dots"></span><span class="mark" aria-hidden="true">◆</span></li>
+          <li><span class="more">ועוד...</span></li>
+        </ul>
+
+        <aside class="callout reveal">
+          <h3>עסקים מהקהילה</h3>
+          <p>תושבי השכונה שפותחים עסק מקומי — זו ההזדמנות שלכם להתמקם בלב הקהילה המתחדשת, ולהיות הכתובת הראשונה של השכנים.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ד׳ · the guide, two sides -->
+    <section class="chapter" aria-labelledby="h-guide">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-no" aria-hidden="true">ד׳</span>
+          <div>
+            <span class="sec-kicker">מה זה האקספו</span>
+            <h2 id="h-guide">מדריך אחד, שני צדדים</h2>
+          </div>
+        </header>
+
+        <p class="spread-intro reveal">מדריך שנתי מהודר שישכון קבע בכל בית בשכונה — פותחים מצד אחד ומגיעים לעסקים, הופכים לצד השני ומגיעים לקהילה.</p>
+
+        <div class="spread reveal">
+          <article class="page" data-folio="א׳">
+            <span class="pg-kicker">הצד האחד</span>
+            <h3>כל העסקים</h3>
+            <p>כל העסקים ונותני השירות של השכונה והסביבה — זמינים לכל משפחה, כל השנה, בהישג יד.</p>
+            <div class="rows" role="img" aria-label="עמוד עסקים במדריך — רשומה אחת מודגשת: העסק שלכם, בדיוק כאן">
+              <div class="row" aria-hidden="true"></div>
+              <div class="row w85" aria-hidden="true"></div>
+              <div class="row-you"><span>העסק שלכם — בדיוק כאן</span><span class="dmark" aria-hidden="true">◆</span></div>
+              <div class="row w70" aria-hidden="true"></div>
+              <div class="row w85" aria-hidden="true"></div>
+              <div class="row w60" aria-hidden="true"></div>
+            </div>
+          </article>
+          <article class="page" data-folio="ב׳">
+            <span class="pg-kicker">הצד השני</span>
+            <h3>כל המידע הקהילתי</h3>
+            <ul>
+              <li>רבנות וכשרות</li>
+              <li>קהילות ומוסדות חינוך</li>
+              <li>שירותי רפואה</li>
+              <li>מיזמי רווחה</li>
+              <li>מכירות חסד וגמ״חים</li>
+            </ul>
+            <p class="pg-cap">מפתח מלא לפי קטגוריות · מתעדכן בכל מהדורה</p>
+          </article>
+        </div>
+
+        <p class="dateline reveal"><span class="dl-label">לוח זמנים</span> המדריך יוצא לאור <b>בתחילת שנת תשפ״ז</b>, בהפצה רווחית וממוקדת לכל בית ועסק בשכונה.</p>
+      </div>
+    </section>
+
+    <!-- ה׳ · join -->
+    <section class="chapter join" aria-labelledby="h-join">
+      <div class="wrap">
+        <span class="sec-kicker reveal">ה׳ · הצטרפות למהדורת תשפ״ז</span>
+        <h2 id="h-join" class="reveal">שריינו לעסק שלכם מקום במדריך</h2>
+        <div class="prose reveal">
+          <p>הצטרפו למדריך המהודר הראשון מסוגו בשכונה — הפצה פרטנית לכל בית ועסק, עם דגש מיוחד על המשפחות החדשות שנכנסות.</p>
+        </div>
+        <p class="punch reveal"><span class="punch-line">והמחירים שלנו — <span class="uline">תופתעו!<svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 10 C 60 2, 160 2, 216 8" stroke="#B88E67" stroke-width="5" fill="none" stroke-linecap="round"/></svg></span></span></p>
+
+        <div class="cta-row reveal" id="join-cta">
+          <a class="btn btn-wa" href="https://wa.me/972504181682?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%A1%D7%95%D7%9D%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.65 15.02L2 22l5.13-1.32A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.19 15.25l-.3-.18-3.04.78.8-2.96-.2-.31A8.2 8.2 0 0 1 12 3.8zm-3.1 3.72c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.07 3.3 5.12 4.5 2.53 1 3.05.8 3.6.75.55-.05 1.77-.72 2.02-1.43.25-.7.25-1.3.17-1.43-.07-.12-.27-.2-.57-.35-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.9-.79-1.5-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.66-1.62-.92-2.21-.24-.58-.49-.5-.67-.5h-.6z"/></svg>
+            שריינו מקום בווטסאפ
+          </a>
+          <a class="btn btn-tel" href="tel:+972504181682">
+            <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span class="num">050-4181682</span>
+          </a>
+        </div>
+
+        <p class="alt-contact reveal">או במייל: <a href="mailto:eh600601@gmail.com">eh600601@gmail.com</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <img class="logo" src="assets/fokus-logo-white.svg" alt="פוקוס נדל״ן">
+    <p>אקספו הסופרים · מדריך מידע ועסקים שנתי למתחם הסופרים, בני ברק</p>
+    <p><a class="ltr" href="tel:+972504181682">050-4181682</a> · <a class="ltr" href="mailto:eh600601@gmail.com">eh600601@gmail.com</a></p>
+    <p>מבית <a href="https://focused-realty.com">פוקוס נדל״ן</a></p>
+  </footer>
+
+</div>
+
+<!-- sticky call bar -->
+<div class="callbar" id="callbar" role="group" aria-label="יצירת קשר">
+  <div class="callbar-inner">
+    <a class="btn btn-wa" href="https://wa.me/972504181682?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%A1%D7%95%D7%9D%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.65 15.02L2 22l5.13-1.32A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.19 15.25l-.3-.18-3.04.78.8-2.96-.2-.31A8.2 8.2 0 0 1 12 3.8zm-3.1 3.72c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.07 3.3 5.12 4.5 2.53 1 3.05.8 3.6.75.55-.05 1.77-.72 2.02-1.43.25-.7.25-1.3.17-1.43-.07-.12-.27-.2-.57-.35-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.9-.79-1.5-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.66-1.62-.92-2.21-.24-.58-.49-.5-.67-.5h-.6z"/></svg>
+      שריינו מקום
+    </a>
+    <a class="btn btn-tel" href="tel:+972504181682">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      <span class="num">050-4181682</span>
+    </a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var bar = document.getElementById('callbar');
+  var heroCta = document.getElementById('hero-cta');
+  var joinCta = document.getElementById('join-cta');
+
+  if ('IntersectionObserver' in window && bar && heroCta && joinCta) {
+    var pastHero = false, joinVisible = false;
+    var update = function(){ bar.classList.toggle('on', pastHero && !joinVisible); };
+    new IntersectionObserver(function(entries){
+      var e = entries[0];
+      pastHero = !e.isIntersecting && e.boundingClientRect.top < 0;
+      update();
+    }).observe(heroCta);
+    new IntersectionObserver(function(entries){
+      joinVisible = entries[0].isIntersecting;
+      update();
+    }).observe(joinCta);
+  } else if (bar) {
+    bar.classList.add('on');
+  }
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if (!reduce && 'IntersectionObserver' in window) {
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+      });
+    }, {threshold:.12});
+    items.forEach(function(el){ ro.observe(el); });
+
+    // safety net: if no observer fired (odd in-app browsers), never leave content hidden
+    setTimeout(function(){
+      if (!document.querySelector('.reveal.in')) {
+        items.forEach(function(el){ el.classList.add('in'); });
+      }
+    }, 1400);
+  } else {
+    items.forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
