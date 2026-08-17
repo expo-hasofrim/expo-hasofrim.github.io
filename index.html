@@ -237,14 +237,18 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 .pricing .sec-sub{margin-top:8px;color:rgba(255,255,255,.72);position:relative}
 .tiers{
   margin-top:clamp(26px,4vw,38px);position:relative;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:14px;
+  list-style:none;padding:0;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:14px;
 }
 .tier{
+  flex:1 1 186px;max-width:230px;
   background:rgba(255,255,255,.045);
   border:1px solid rgba(255,255,255,.13);border-radius:18px;
   padding:22px 18px 20px;text-align:center;position:relative;
+  display:flex;flex-direction:column;align-items:center;
   transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease;
 }
+.tier .price{margin-top:auto;padding-top:8px}
 .tier:hover{transform:translateY(-5px);border-color:rgba(229,200,120,.6);background:rgba(229,200,120,.07);box-shadow:0 18px 44px rgba(0,0,0,.35)}
 .tier.star{border-color:rgba(229,200,120,.65);background:rgba(229,200,120,.08)}
 .tier .badge{
@@ -262,7 +266,8 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 .tier .name{display:block;font-weight:700;font-size:1.02rem;color:#fff}
 .tier .dims{display:block;font-family:'Rubik',sans-serif;font-size:.8rem;color:rgba(255,255,255,.6);margin-top:2px;min-height:2.4em}
 .tier .price{
-  display:block;margin-top:8px;font-family:'Secular One',sans-serif;font-size:clamp(1.5rem,3.4vw,1.9rem);
+  display:block;font-family:'Secular One',sans-serif;font-size:clamp(1.5rem,3.4vw,1.9rem);
+  white-space:nowrap;
   background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .tier .price .num{font-family:inherit}
@@ -318,11 +323,10 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
   .sides-grid{grid-template-columns:1fr}
   .callbar{display:flex}
   body{padding-bottom:76px}
-  .tiers{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:420px){
   .hero .cta-row .btn,.finale .cta-row .btn{flex:1 1 100%}
-  .tiers{grid-template-columns:1fr 1fr}
+  .tier{flex-basis:44%;max-width:none}
   .tier .dims{min-height:0}
 }
 @media (prefers-reduced-motion:reduce){
