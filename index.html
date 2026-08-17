@@ -129,21 +129,15 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 .lede strong{color:var(--ink)}
 .hero .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;justify-content:center}
 /* שבבי עובדות צפים */
-.factbar{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(30px,5vw,46px)}
+.factbar{
+  display:flex;flex-wrap:wrap;gap:10px clamp(22px,4vw,44px);justify-content:center;
+  margin-top:clamp(38px,6vw,58px);
+}
 .fchip{
   display:inline-flex;align-items:center;gap:9px;
-  background:rgba(255,255,255,.75);backdrop-filter:blur(8px);
-  border:1px solid var(--mist-line);border-radius:999px;
-  padding:10px 18px;font-family:'Rubik',sans-serif;font-weight:500;font-size:.92rem;color:var(--ink);
-  box-shadow:0 10px 26px rgba(27,42,74,.08);
+  font-family:'Rubik',sans-serif;font-weight:500;font-size:.9rem;color:var(--muted);
 }
-.fchip .d{width:8px;height:8px;border-radius:50%;background:var(--grad-gold);flex:none}
-@media (prefers-reduced-motion:no-preference){
-  .fchip{animation:floaty 5.5s ease-in-out infinite alternate}
-  .fchip:nth-child(2){animation-delay:.9s}
-  .fchip:nth-child(3){animation-delay:1.8s}
-  @keyframes floaty{from{transform:translateY(0)}to{transform:translateY(-7px)}}
-}
+.fchip .d{width:7px;height:7px;border-radius:50%;background:var(--grad-gold);flex:none}
 
 /* ═══ שני צדדים ═══ */
 .sides{padding-block:clamp(48px,7vw,84px) 0}
@@ -277,6 +271,15 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 }
 .pnote b{color:#fff;font-weight:600}
 .pnote .free{color:var(--gold-light);font-weight:600}
+/* תשלום — ממתין לחיבור סליקה */
+.payrow{margin-top:18px;position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.btn-pay{
+  border:1.5px dashed rgba(229,200,120,.55);color:rgba(255,255,255,.75);
+  background:rgba(229,200,120,.06);cursor:not-allowed;pointer-events:none;
+}
+.payrow .soon{
+  font-family:'Rubik',sans-serif;font-size:.82rem;color:rgba(255,255,255,.55);
+}
 /* שליחת חומר */
 .send-card{
   margin-top:clamp(24px,4vw,34px);position:relative;
@@ -363,7 +366,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
       </h1>
       <p class="hook">בכל בית בשכונה.<br><span class="goldtx">כל השנה.</span></p>
       <p class="lede">
-        המדריך המודפס של מתחם הסופרים יושב על השיש של כל משפחה —
+        המדריך המודפס של מתחם הסופרים יושב על השיש של כל משפחה —<br>
         <strong>ומודעה אחת בו עובדת בשבילכם 365 ימים.</strong>
       </p>
       <div class="cta-row">
@@ -428,7 +431,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
         <p>לכל מי שמשרת משפחה שנכנסת לדירה חדשה ומתמקמת בה</p>
       </div>
     </div>
-    <div class="marquee rv" aria-hidden="false">
+    <div class="marquee rv" aria-label="קטגוריות עסקים">
       <div class="mrow">
         <span>תיווך <b>ויזמות</b></span><span>אדריכלות <b>ועיצוב פנים</b></span><span>מטבחים <b>וארונות</b></span><span>שיפוצים <b>ותיקונים</b></span><span>תאורה <b>ומיזוג</b></span><span>הובלות</span><span>בדק <b>ונקיון</b></span>
         <span class="dup">תיווך <b>ויזמות</b></span><span class="dup">אדריכלות <b>ועיצוב פנים</b></span><span class="dup">מטבחים <b>וארונות</b></span><span class="dup">שיפוצים <b>ותיקונים</b></span><span class="dup">תאורה <b>ומיזוג</b></span><span class="dup">הובלות</span><span class="dup">בדק <b>ונקיון</b></span>
@@ -496,6 +499,13 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
         <span><b>תוספת גרפיקה בסיסית</b> — <span class="num">50</span> ₪</span>
         <span class="free">התאמה למדריך — חינם</span>
       </p>
+      <div class="payrow">
+        <span class="btn btn-pay" aria-disabled="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 0-5 5v3H6c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 1 1 6 0v3H9z"/></svg>
+          תשלום מאובטח באשראי
+        </span>
+        <span class="soon">יופעל בקרוב, עם חיבור חשבון הסליקה</span>
+      </div>
       <div class="send-card">
         <div>
           <h3>יש לכם כבר מודעה מוכנה?</h3>
