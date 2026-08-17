@@ -113,16 +113,13 @@ legend{
 .choice input:checked + span{color:var(--ink)}
 .choice label:has(input:checked){border-color:var(--gold);background:rgba(201,162,75,.08)}
 
-.consent{
-  display:flex;gap:12px;align-items:flex-start;
-  border:1px solid var(--mist-line);border-radius:14px;background:var(--mist);
-  padding:16px 18px;margin-top:4px;
+.usenote{
+  font-family:'Rubik',sans-serif;font-size:.84rem;color:var(--muted);
+  text-align:center;margin-top:4px;
 }
-.consent input{accent-color:var(--gold-deep);width:20px;height:20px;flex:none;margin-top:3px}
-.consent .txt{font-size:.96rem;color:var(--ink)}
-.consent .txt small{display:block;color:var(--muted);margin-top:4px;font-size:.86rem;line-height:1.5}
 
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;align-items:center}
+.actions{display:flex;justify-content:center;margin-top:20px}
+.actions .btn{min-width:min(320px,100%)}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   min-height:54px;padding:13px 28px;border-radius:999px;
@@ -143,7 +140,6 @@ legend{
 .btn-line{border-color:rgba(27,42,74,.28);color:var(--ink);background:rgba(255,255,255,.7)}
 .btn-line:hover{border-color:var(--ink)}
 .btn svg{width:20px;height:20px;flex:none}
-.actions .or{font-family:'Rubik',sans-serif;font-size:.88rem;color:var(--muted)}
 
 .err-box{
   display:none;margin-top:14px;border:1px solid rgba(179,38,30,.35);background:rgba(179,38,30,.06);
@@ -261,25 +257,14 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
       </div>
     </fieldset>
 
-    <label class="consent">
-      <input type="checkbox" id="consent" required>
-      <span class="txt">
-        אני מאשר/ת פרסום הפרטים באלפון התושבים של המדריך.
-        <small>הפרטים ישמשו אך ורק לאלפון התושבים של מתחם הסופרים, ולא יימסרו לגורם מסחרי. אפשר לבקש הסרה או תיקון בכל שלב בטלפון <span class="num">050-4181682</span>.</small>
-      </span>
-    </label>
+    <p class="usenote">הפרטים ישמשו לאלפון התושבים של מתחם הסופרים בלבד. להסרה או תיקון: <span class="num">050-4181682</span></p>
 
     <div class="err-box" id="err" role="alert"></div>
 
     <div class="actions">
-      <button type="button" class="btn btn-gold" id="sendWa">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.1.6 4.2 1.7 6L4 29l8.3-1.6c1.2.6 2.4.9 3.7.9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm5.9 16.6c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.2.3-4-.8-3.4-1.4-5.6-4.8-5.8-5-.2-.2-1.4-1.8-1.4-3.5s.9-2.5 1.2-2.8c.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.5l1 2.4c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.4.4-.2.7.2.4.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.6.1.8-.1l1.2-1.4c.2-.3.5-.2.8-.1l2.2 1c.3.2.6.3.6.4.1.2.1.8-.2 1.5z"/></svg>
-        שליחה בווטסאפ
-      </button>
-      <span class="or">או</span>
-      <button type="button" class="btn btn-line" id="sendMail">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 5h16c.6 0 1 .4 1 1v12c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1V6c0-.6.4-1 1-1zm8 7.2L5.2 7h13.6L12 12.2zM5 9.1V17h14V9.1l-7 5.3-7-5.3z"/></svg>
-        שליחה במייל
+      <button type="button" class="btn btn-gold" id="send">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2.5 21 23 12 2.5 3 2.49 10l14.51 2-14.51 2z"/></svg>
+        שליחת הרישום
       </button>
     </div>
   </form>
@@ -299,7 +284,6 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 <script>
 (function(){
   var WA = '972504181682';
-  var MAIL = 'eh600601@gmail.com';
   var f = document.getElementById('f');
   var errBox = document.getElementById('err');
   var done = document.getElementById('done');
@@ -322,8 +306,6 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
     var status = f.querySelector('input[name="מעמד"]:checked');
     if (!status) problems.push('בעל הנכס או שוכר');
 
-    if (!document.getElementById('consent').checked) problems.push('אישור פרסום הפרטים');
-
     if (problems.length){
       errBox.textContent = 'חסר: ' + problems.join(' · ');
       errBox.classList.add('on');
@@ -343,7 +325,6 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
     if (val('twoman')) lines.push('טלפון אשה: ' + val('twoman'));
     lines.push('מעמד: ' + status.value);
     lines.push('');
-    lines.push('מאשר/ת פרסום הפרטים באלפון התושבים.');
     return lines.join('\n');
   }
 
@@ -353,24 +334,10 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
     done.scrollIntoView({block:'center', behavior:'smooth'});
   }
 
-  document.getElementById('sendWa').addEventListener('click', function(){
+  document.getElementById('send').addEventListener('click', function(){
     var body = collect();
     if (!body) return;
     window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(body), '_blank', 'noopener');
-    finish();
-  });
-
-  document.getElementById('sendMail').addEventListener('click', function(){
-    var body = collect();
-    if (!body) return;
-    var subject = encodeURIComponent('רישום לאלפון התושבים — ' + val('fname') + ' ' + val('lname'));
-    var mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (mobile) {
-      window.location.href = 'mailto:' + MAIL + '?subject=' + subject + '&body=' + encodeURIComponent(body);
-    } else {
-      window.open('https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(MAIL) +
-        '&su=' + subject + '&body=' + encodeURIComponent(body), '_blank', 'noopener');
-    }
     finish();
   });
 
