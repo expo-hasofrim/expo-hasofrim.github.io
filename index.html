@@ -15,28 +15,27 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B2A4A'/%3E%3Cpath d='M32 17c-5.2-3-12.4-4-16.5-4v33.6c4.1 0 11.3 1 16.5 4 5.2-3 12.4-4 16.5-4V13c-4.1 0-11.3 1-16.5 4z' fill='none' stroke='%23C9A24B' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M32 17v33.6' stroke='%23C9A24B' stroke-width='4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Rubik:wght@400;500;600;800&family=Secular+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Rubik:wght@400;500;600&family=Secular+One&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#FCFCFA;
-  --ink:#1B2A4A;          /* נייבי הלוגו */
+  --ink:#1B2A4A;
   --ink-deep:#131F38;
   --ink-dark:#0D1730;
   --muted:#5A6478;
-  --gold:#C9A24B;         /* זהב הלוגו */
+  --gold:#C9A24B;
   --gold-light:#E5C878;
-  --gold-deep:#8F6A1F;    /* לטקסט זהב קטן — עובר AA על לבן */
-  --gold-wash:#F7F0DF;
-  --mist:#EEF1F6;         /* משטח נייבי בהיר */
-  --mist-line:#DCE1EB;
+  --gold-deep:#8F6A1F;
+  --mist:#F1F3F7;
+  --mist-line:#DFE3EC;
   --paper:#FFFFFF;
-  --max:1120px;
-  --radius:16px;
+  --max:1080px;
+  --r:14px;
   --grad-gold:linear-gradient(115deg,#E5C878 0%,#C9A24B 45%,#A97F2E 100%);
+  --sec-pad:clamp(52px,8vw,92px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{
   background:var(--bg);
   color:var(--ink);
@@ -50,7 +49,9 @@ a{color:inherit}
 img{max-width:100%}
 .wrap{max-width:var(--max);margin-inline:auto;padding-inline:clamp(18px,4.5vw,44px)}
 
-h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.14;text-wrap:balance}
+h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.16;text-wrap:balance}
+h2{font-size:clamp(1.7rem,4vw,2.4rem)}
+.sec-sub{margin-top:10px;color:var(--muted);font-size:1.06rem;max-width:36em}
 .label{font-family:'Rubik',sans-serif;font-weight:500;font-size:.82rem;letter-spacing:.02em;color:var(--gold-deep)}
 .num{font-family:'Rubik',sans-serif;font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;display:inline-block}
 
@@ -60,70 +61,49 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 .top{display:flex;justify-content:space-between;align-items:center;padding-block:16px;font-family:'Rubik',sans-serif;font-size:.82rem;color:var(--muted)}
 .top .bsd{color:var(--ink);font-weight:500}
 
-/* ---------- hero: logo lockup ---------- */
-.hero{padding-block:clamp(10px,2.5vw,28px) clamp(40px,6vw,70px);text-align:center}
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(8px,2vw,24px) clamp(44px,6vw,72px);text-align:center}
 .logo-lock{display:inline-flex;flex-direction:column;align-items:center}
-.logo-crop{
-  width:clamp(240px,44vw,380px);aspect-ratio:512/340;overflow:hidden;
-  margin-inline:auto;
-}
+.logo-crop{width:clamp(240px,44vw,370px);aspect-ratio:512/340;overflow:hidden;margin-inline:auto}
 .logo-img{width:100%;height:auto;display:block;mix-blend-mode:multiply}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .logo-lock .l3{
   font-family:'Rubik',sans-serif;font-weight:500;color:var(--ink);
-  font-size:clamp(.94rem,2.4vw,1.14rem);margin-top:-4px;
+  font-size:clamp(.94rem,2.4vw,1.12rem);margin-top:-2px;
 }
 .hero .lede{
-  margin:26px auto 0;max-width:36em;color:var(--muted);
-  font-size:clamp(1.04rem,2.1vw,1.22rem);
+  margin:24px auto 0;max-width:36em;color:var(--muted);
+  font-size:clamp(1.04rem,2.1vw,1.2rem);
 }
 .hero .lede strong{color:var(--ink)}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;justify-content:center}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;justify-content:center}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  min-height:52px;padding:12px 24px;border-radius:999px;
+  min-height:52px;padding:12px 24px;border-radius:12px;
   font-family:'Assistant',sans-serif;font-weight:700;font-size:1.02rem;
-  text-decoration:none;border:2px solid transparent;
-  transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease,border-color .18s ease;
+  text-decoration:none;border:1.5px solid transparent;
+  transition:transform .16s ease,box-shadow .16s ease,background .16s ease,color .16s ease,border-color .16s ease;
 }
-.btn:hover{transform:translateY(-2px)}
+.btn:hover{transform:translateY(-1px)}
 .btn:active{transform:translateY(1px)}
-.btn-gold{background:var(--grad-gold);color:var(--ink-dark);box-shadow:0 10px 26px rgba(169,127,46,.35)}
-.btn-gold:hover{box-shadow:0 14px 32px rgba(169,127,46,.45)}
-.btn-navy{background:var(--ink);color:#fff;box-shadow:0 10px 24px rgba(27,42,74,.28)}
-.btn-navy:hover{background:var(--ink-deep)}
-.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
-.btn-line:hover{background:var(--ink);color:#fff}
-.btn-soft{border-color:var(--mist-line);background:var(--mist);color:var(--ink)}
-.btn-soft:hover{border-color:var(--gold);background:#fff}
+.btn-gold{background:var(--grad-gold);color:var(--ink-dark);box-shadow:0 8px 22px rgba(169,127,46,.30)}
+.btn-gold:hover{box-shadow:0 12px 28px rgba(169,127,46,.4)}
+.btn-line{border-color:var(--mist-line);color:var(--ink);background:var(--paper)}
+.btn-line:hover{border-color:var(--ink)}
+.btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
 .btn svg{width:20px;height:20px;flex:none}
 .hero-note{margin-top:16px;font-family:'Rubik',sans-serif;font-size:.84rem;color:var(--muted)}
 
-/* ---------- neighborhood photo band ---------- */
-.shot{position:relative;height:clamp(170px,26vw,270px);overflow:hidden}
-.shot img{width:100%;height:100%;object-fit:cover;display:block}
-.shot::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,var(--bg) 0%,rgba(27,42,74,.05) 30%,rgba(27,42,74,.55) 100%);
-}
-.shot .cap{
-  position:absolute;bottom:12px;inset-inline:0;text-align:center;z-index:1;
-  color:#fff;font-family:'Rubik',sans-serif;font-size:.8rem;text-shadow:0 1px 8px rgba(0,0,0,.6);
-}
-
 /* ---------- two sides ---------- */
-.sides{padding-block:clamp(52px,8vw,92px)}
-.sides-head{max-width:34em}
-.sides-head h2{font-size:clamp(1.8rem,4.4vw,2.7rem)}
-.sides-head p{margin-top:12px;color:var(--muted);font-size:1.08rem}
-.sides-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,28px);margin-top:clamp(28px,4vw,44px)}
-.panel{border-radius:var(--radius);padding:clamp(24px,3.5vw,38px);transition:transform .25s ease,box-shadow .25s ease}
-.panel:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(27,42,74,.12)}
-.panel h3{font-family:'Secular One',sans-serif;font-weight:400;font-size:clamp(1.3rem,2.6vw,1.7rem);margin-bottom:6px}
-.panel .sub{font-family:'Rubik',sans-serif;font-size:.84rem;margin-bottom:18px}
-.panel ul{list-style:none;display:grid;gap:10px}
-.panel li{padding-right:22px;position:relative}
-.panel li::before{content:"";position:absolute;right:0;top:.55em;width:9px;height:9px;border-radius:3px}
+.sides{padding-block:0 var(--sec-pad)}
+.sides-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,24px);margin-top:clamp(26px,4vw,40px)}
+.panel{border-radius:var(--r);padding:clamp(24px,3.5vw,36px)}
+.panel h3{font-family:'Secular One',sans-serif;font-weight:400;font-size:clamp(1.25rem,2.5vw,1.6rem);margin-bottom:4px}
+.panel .sub{font-family:'Rubik',sans-serif;font-size:.84rem;margin-bottom:16px}
+.panel ul{list-style:none;display:grid;gap:9px}
+.panel li{padding-right:20px;position:relative}
+.panel li::before{content:"";position:absolute;right:0;top:.6em;width:7px;height:7px;border-radius:2px}
 .panel-com{background:var(--mist)}
 .panel-com .sub{color:var(--gold-deep)}
 .panel-com li::before{background:var(--gold)}
@@ -131,113 +111,110 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 .panel-biz .sub{color:var(--gold-light)}
 .panel-biz p{color:rgba(255,255,255,.87)}
 .panel-biz .you{
-  margin-top:20px;padding:13px 16px;border:1px dashed rgba(229,200,120,.55);border-radius:10px;
+  margin-top:18px;padding:12px 16px;border:1px solid rgba(229,200,120,.4);border-radius:10px;
   font-family:'Rubik',sans-serif;font-size:.9rem;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:10px;
 }
 .panel-biz .you b{font-weight:500}
-.panel-biz .you .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);flex:none}
+.panel-biz .you .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);flex:none}
 
 /* ---------- categories ---------- */
-.cats{padding-block:0 clamp(48px,7vw,80px)}
-.cats h2{font-size:clamp(1.6rem,3.8vw,2.3rem)}
-.cats .intro{color:var(--muted);margin-top:10px;max-width:36em;font-size:1.05rem}
-.chiplist{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.cats{padding-block:0 var(--sec-pad)}
+.chiplist{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 .chiplist li{
-  background:var(--mist);border:1px solid var(--mist-line);border-radius:999px;
-  padding:9px 18px;font-weight:600;font-size:.95rem;
-  transition:transform .18s ease,background .18s ease,border-color .18s ease;
+  background:var(--paper);border:1px solid var(--mist-line);border-radius:9px;
+  padding:8px 16px;font-weight:600;font-size:.93rem;color:var(--ink);
+  transition:border-color .16s ease;
 }
-.chiplist li:hover{transform:translateY(-2px);background:#fff;border-color:var(--gold)}
+.chiplist li:hover{border-color:var(--gold)}
 .chiplist li.more{background:transparent;border-style:dashed;color:var(--muted);font-weight:400}
 
-/* ---------- community businesses ---------- */
-.community{background:var(--ink);color:#fff;padding-block:clamp(56px,9vw,100px);position:relative;overflow:hidden}
-.community::before{
-  content:"״";font-family:'Secular One',sans-serif;opacity:.14;
-  background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;
-  position:absolute;top:-30px;right:4vw;font-size:clamp(14rem,30vw,26rem);line-height:1;pointer-events:none;
+/* ---------- community ---------- */
+.community{
+  background:
+    linear-gradient(rgba(19,31,56,.88),rgba(13,23,48,.94)),
+    url('assets/neighborhood.webp') center/cover no-repeat,
+    var(--ink);
+  color:#fff;padding-block:var(--sec-pad);position:relative;
 }
 .community .eyebrow{
-  display:inline-block;font-family:'Rubik',sans-serif;font-weight:600;font-size:.86rem;
-  color:var(--gold-light);border:1px solid rgba(201,162,75,.55);border-radius:999px;padding:6px 16px;
+  display:inline-block;font-family:'Rubik',sans-serif;font-weight:600;font-size:.85rem;
+  color:var(--gold-light);border:1px solid rgba(201,162,75,.5);border-radius:999px;padding:5px 15px;
 }
-.community .disp{
-  font-size:clamp(2.1rem,6.3vw,3.9rem);margin-top:22px;color:#fff;max-width:14em;
-}
+.community .disp{font-size:clamp(2rem,6vw,3.6rem);margin-top:20px;color:#fff;max-width:14em}
 .community .disp .q{color:var(--gold)}
-.community p.body{margin-top:18px;max-width:36em;color:rgba(255,255,255,.87);font-size:clamp(1.02rem,2vw,1.18rem)}
+.community p.body{margin-top:16px;max-width:36em;color:rgba(255,255,255,.87);font-size:clamp(1.02rem,2vw,1.16rem)}
 .community .mini{margin-top:26px}
+.community .credit{
+  position:absolute;bottom:10px;left:14px;
+  font-family:'Rubik',sans-serif;font-size:.72rem;color:rgba(255,255,255,.5);
+}
 
 /* ---------- pricing ---------- */
-.pricing{padding-block:clamp(52px,8vw,96px)}
-.pricing h2{font-size:clamp(1.8rem,4.4vw,2.7rem)}
-.pricing .intro{color:var(--muted);margin-top:10px;max-width:36em;font-size:1.05rem}
-.pricelist{margin-top:clamp(26px,4vw,40px);display:grid;gap:12px;list-style:none}
+.pricing{padding-block:var(--sec-pad)}
+.pricelist{margin-top:clamp(24px,4vw,36px);list-style:none;border:1px solid var(--mist-line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
 .prow{
   display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:18px;align-items:center;
-  background:var(--paper);border:1px solid var(--mist-line);border-radius:14px;
   padding:16px 20px;
-  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
 }
-.prow:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 12px 30px rgba(27,42,74,.10)}
-.shape{justify-self:center;background:var(--gold-wash);border:2px solid var(--gold);border-radius:4px}
-.sh-full{width:33px;height:48px}
-.sh-halfV{width:17px;height:48px}
-.sh-halfH{width:33px;height:24px}
-.sh-quart{width:24px;height:17px}
-.sh-eighth{width:17px;height:11px}
-.sh-line{width:44px;height:8px;border-radius:3px}
-.shape-pair{display:flex;gap:5px;align-items:flex-end;justify-self:center}
-.prow .name{font-weight:700;font-size:1.06rem;display:block}
-.prow .dims{font-family:'Rubik',sans-serif;font-size:.84rem;color:var(--muted);margin-top:2px;display:block}
-.prow .price{font-family:'Secular One',sans-serif;font-size:clamp(1.2rem,3vw,1.5rem);color:var(--ink);white-space:nowrap}
+.prow + .prow{border-top:1px solid var(--mist-line)}
+.shape{justify-self:center;background:transparent;border:1.5px solid var(--gold);border-radius:3px}
+.sh-full{width:30px;height:44px}
+.sh-halfV{width:15px;height:44px}
+.sh-halfH{width:30px;height:22px}
+.sh-quart{width:22px;height:15px}
+.sh-eighth{width:15px;height:10px}
+.sh-line{width:40px;height:7px;border-radius:2px;background:var(--gold);border:none}
+.shape-pair{display:flex;gap:4px;align-items:flex-end;justify-self:center}
+.prow .name{font-weight:700;font-size:1.04rem;display:block}
+.prow .dims{font-family:'Rubik',sans-serif;font-size:.83rem;color:var(--muted);margin-top:1px;display:block}
+.prow .price{font-family:'Secular One',sans-serif;font-size:clamp(1.15rem,2.8vw,1.4rem);color:var(--ink);white-space:nowrap}
 .prow .price .num{font-family:inherit}
 .pnote{
-  margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 26px;
+  margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 26px;
   font-family:'Rubik',sans-serif;font-size:.9rem;color:var(--muted);
 }
 .pnote b{color:var(--ink);font-weight:600}
 .pnote .free{color:var(--gold-deep);font-weight:600}
 
 /* ---------- send material ---------- */
-.send{padding-block:0 clamp(52px,8vw,90px)}
 .send-card{
-  background:var(--mist);border:1px solid var(--mist-line);border-radius:var(--radius);
-  padding:clamp(24px,4vw,40px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;
+  margin-top:clamp(28px,4vw,40px);
+  border:1px solid var(--mist-line);border-radius:var(--r);background:var(--mist);
+  padding:clamp(22px,3.5vw,34px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;
 }
-.send-card h2{font-size:clamp(1.4rem,3.2vw,1.9rem)}
-.send-card p{color:var(--muted);margin-top:8px;max-width:34em}
+.send-card h3{font-family:'Secular One',sans-serif;font-weight:400;font-size:clamp(1.25rem,2.8vw,1.6rem)}
+.send-card p{color:var(--muted);margin-top:6px;max-width:34em}
 .send-card .btns{display:flex;flex-wrap:wrap;gap:10px}
 
 /* ---------- when ---------- */
-.when{background:var(--mist);padding-block:clamp(40px,6vw,64px)}
-.when .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,32px)}
-.when h2{font-size:clamp(1.5rem,3.4vw,2rem);margin-bottom:clamp(20px,3vw,32px)}
-.fact{background:var(--paper);border-radius:var(--radius);padding:22px 24px;border:1px solid var(--mist-line)}
-.fact .label{display:block;margin-bottom:6px}
-.fact p{font-weight:600;font-size:1.02rem;line-height:1.45}
+.when{border-block:1px solid var(--mist-line);background:var(--paper);padding-block:clamp(26px,4vw,38px)}
+.when .row{
+  display:flex;flex-wrap:wrap;gap:14px clamp(24px,4vw,54px);
+  justify-content:center;align-items:baseline;text-align:center;
+}
+.when .item{font-weight:600;font-size:clamp(.98rem,2vw,1.08rem)}
+.when .item .label{display:inline;margin-inline-end:8px}
+.when .sep{color:var(--gold);font-size:1.1rem}
 
 /* ---------- final cta ---------- */
-.finale{padding-block:clamp(56px,9vw,104px)}
+.finale{padding-block:var(--sec-pad)}
 .finale-card{
   background:linear-gradient(155deg,var(--ink) 0%,var(--ink-dark) 100%);
-  border-radius:calc(var(--radius) + 8px);color:#fff;
-  padding:clamp(34px,6vw,64px);position:relative;overflow:hidden;
+  border-radius:calc(var(--r) + 6px);color:#fff;
+  padding:clamp(34px,6vw,60px);position:relative;overflow:hidden;
 }
 .finale-card::before{
   content:"";position:absolute;inset-inline:-10%;top:-55%;height:90%;
-  background:radial-gradient(closest-side,rgba(229,200,120,.14),transparent);
+  background:radial-gradient(closest-side,rgba(229,200,120,.13),transparent);
 }
-.finale-card h2{font-size:clamp(1.9rem,5.3vw,3.2rem);position:relative}
-.finale-card .sub{margin-top:12px;font-size:clamp(1rem,2vw,1.15rem);color:rgba(255,255,255,.88);max-width:34em;position:relative}
-.finale-card .cta-row{margin-top:30px;position:relative;justify-content:flex-start}
-.btn-ghost{border-color:rgba(255,255,255,.6);color:#fff}
-.btn-ghost:hover{background:rgba(255,255,255,.12)}
-.alt-mail{margin-top:20px;font-family:'Rubik',sans-serif;font-size:.9rem;color:rgba(255,255,255,.75);position:relative}
+.finale-card h2{font-size:clamp(1.9rem,5.2vw,3rem);position:relative}
+.finale-card .sub{margin-top:12px;font-size:clamp(1rem,2vw,1.14rem);color:rgba(255,255,255,.88);max-width:34em;position:relative}
+.finale-card .cta-row{margin-top:28px;position:relative;justify-content:flex-start}
+.alt-mail{margin-top:18px;font-family:'Rubik',sans-serif;font-size:.9rem;color:rgba(255,255,255,.75);position:relative}
 .alt-mail a{color:#fff;text-underline-offset:3px}
 
 /* ---------- footer ---------- */
-footer{padding-block:30px 42px;color:var(--muted);font-family:'Rubik',sans-serif;font-size:.85rem}
+footer{padding-block:28px 40px;color:var(--muted);font-family:'Rubik',sans-serif;font-size:.85rem}
 footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;align-items:center}
 
 /* ---------- mobile callbar ---------- */
@@ -249,9 +226,9 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 }
 .callbar .btn{flex:1;min-height:48px;padding:9px 12px;font-size:1rem}
 
-/* ---------- reveal ---------- */
+/* ---------- reveal: sections only, gentle ---------- */
 .rv{opacity:1;transform:none}
-.js-anim .rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.js-anim .rv{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
 .js-anim .rv.in{opacity:1;transform:none}
 
 /* ---------- responsive ---------- */
@@ -260,18 +237,20 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 }
 @media (max-width:760px){
   .sides-grid{grid-template-columns:1fr}
-  .when .grid{grid-template-columns:1fr}
   .callbar{display:flex}
   body{padding-bottom:76px}
-  .prow{grid-template-columns:52px minmax(0,1fr) auto;gap:12px;padding:14px 16px}
+  .prow{grid-template-columns:50px minmax(0,1fr) auto;gap:12px;padding:14px 16px}
+  .when .row{flex-direction:column;gap:8px}
+  .when .sep{display:none}
 }
 @media (max-width:420px){
   .cta-row .btn{flex:1 1 100%}
-  .prow .price{font-size:1.1rem}
+  .prow .price{font-size:1.08rem}
 }
 @media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
   .js-anim .rv{opacity:1;transform:none;transition:none}
-  .btn,.panel,.chiplist li,.prow{transition:none}
+  .btn,.chiplist li{transition:none}
 }
 </style>
 </head>
@@ -283,7 +262,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 </header>
 
 <main>
-  <!-- hero: logo lockup -->
+  <!-- hero -->
   <section class="hero">
     <div class="wrap">
       <h1 class="logo-lock">
@@ -304,7 +283,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
           <span class="num">050-4181682</span>
         </a>
-        <a class="btn btn-soft" href="mailto:eh600601@gmail.com">
+        <a class="btn btn-line js-mail" href="mailto:eh600601@gmail.com?subject=%D7%A4%D7%A0%D7%99%D7%99%D7%94%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%E2%80%94%20%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 5h16c.6 0 1 .4 1 1v12c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1V6c0-.6.4-1 1-1zm8 7.2L5.2 7h13.6L12 12.2zM5 9.1V17h14V9.1l-7 5.3-7-5.3z"/></svg>
           <span class="num">eh600601@gmail.com</span>
         </a>
@@ -313,21 +292,13 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
     </div>
   </section>
 
-  <!-- neighborhood photo -->
-  <div class="shot">
-    <img src="assets/neighborhood.webp" alt="מתחם הסופרים על גדות הירקון">
-    <span class="cap">מתחם הסופרים · על גדות הירקון</span>
-  </div>
-
   <!-- two sides -->
   <section class="sides">
-    <div class="wrap">
-      <div class="sides-head rv">
-        <h2>מדריך אחד. שני צדדים.</h2>
-        <p>פותחים מצד אחד — מוצאים את הקהילה. הופכים את המדריך — מוצאים את העסקים. וכך הוא נשאר בבית כל השנה.</p>
-      </div>
+    <div class="wrap rv">
+      <h2>מדריך אחד. שני צדדים.</h2>
+      <p class="sec-sub">פותחים מצד אחד — מוצאים את הקהילה. הופכים את המדריך — מוצאים את העסקים. וכך הוא נשאר בבית כל השנה.</p>
       <div class="sides-grid">
-        <div class="panel panel-com rv">
+        <div class="panel panel-com">
           <h3>צד הקהילה</h3>
           <p class="sub">כל המידע החיוני לתושב</p>
           <ul>
@@ -338,7 +309,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
             <li>גמ״חים</li>
           </ul>
         </div>
-        <div class="panel panel-biz rv">
+        <div class="panel panel-biz">
           <h3>קורות בתינו</h3>
           <p class="sub">מדור העסקים של המדריך</p>
           <p>
@@ -353,10 +324,10 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 
   <!-- categories -->
   <section class="cats">
-    <div class="wrap">
-      <h2 class="rv">למי זה מתאים?</h2>
-      <p class="intro rv">לכל מי שמשרת משפחה שנכנסת לדירה חדשה ומתמקמת בה:</p>
-      <ul class="chiplist rv">
+    <div class="wrap rv">
+      <h2>למי זה מתאים?</h2>
+      <p class="sec-sub">לכל מי שמשרת משפחה שנכנסת לדירה חדשה ומתמקמת בה:</p>
+      <ul class="chiplist">
         <li>תיווך ויזמות</li>
         <li>אדריכלות ועיצוב פנים</li>
         <li>מטבחים וארונות</li>
@@ -375,72 +346,68 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
     </div>
   </section>
 
-  <!-- community businesses — emphasized -->
+  <!-- community businesses -->
   <section class="community">
-    <div class="wrap">
-      <span class="eyebrow rv">עסקים בקהילה</span>
-      <p class="disp rv"><span class="q">״</span>צאו והתפרנסו זה מזה<span class="q">״</span></p>
-      <p class="body rv">
+    <div class="wrap rv">
+      <span class="eyebrow">עסקים בקהילה</span>
+      <p class="disp"><span class="q">״</span>צאו והתפרנסו זה מזה<span class="q">״</span></p>
+      <p class="body">
         יש לכם כישרון? יוזמה? עסק קטן שמתחיל? האקספו נותן לחברים מהקהילה
         חשיפה קבועה ומקום מכובד בשכונה המתחדשת — מהיום הראשון.
         <strong>השכנים שלכם הם הלקוחות הראשונים שלכם.</strong>
       </p>
-      <div class="mini rv">
+      <div class="mini">
         <a class="btn btn-gold" href="https://wa.me/972504181682?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A2%D7%A1%D7%A7%20%D7%9E%D7%94%D7%A7%D7%94%D7%99%D7%9C%D7%94%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%94%D7%90%D7%A7%D7%A1%D7%A4%D7%95" target="_blank" rel="noopener">אני מהקהילה — ספרו לי עוד</a>
       </div>
     </div>
+    <span class="credit">מתחם הסופרים · על גדות הירקון</span>
   </section>
 
-  <!-- pricing -->
+  <!-- pricing + send -->
   <section class="pricing">
-    <div class="wrap">
-      <h2 class="rv">מחירון מהדורת תשפ״ז</h2>
-      <p class="intro rv">מחירי היכרות למהדורה הראשונה. המידות בס״מ.</p>
+    <div class="wrap rv">
+      <h2>מחירון מהדורת תשפ״ז</h2>
+      <p class="sec-sub">מחירי היכרות למהדורה הראשונה. המידות בס״מ.</p>
       <ul class="pricelist">
-        <li class="prow rv">
+        <li class="prow">
           <span class="shape sh-full" aria-hidden="true"></span>
           <span><span class="name">עמוד שלם</span><span class="dims"><span class="num">17.5×12</span></span></span>
           <span class="price"><span class="num">1,200</span> ₪</span>
         </li>
-        <li class="prow rv">
+        <li class="prow">
           <span class="shape-pair" aria-hidden="true"><span class="shape sh-halfV"></span><span class="shape sh-halfH"></span></span>
           <span><span class="name">חצי עמוד</span><span class="dims">לגובה <span class="num">17.5×6</span> · לרוחב <span class="num">12×8.5</span></span></span>
           <span class="price"><span class="num">620</span> ₪</span>
         </li>
-        <li class="prow rv">
+        <li class="prow">
           <span class="shape sh-quart" aria-hidden="true"></span>
           <span><span class="name">רבע עמוד</span><span class="dims"><span class="num">8.5×6</span></span></span>
           <span class="price"><span class="num">380</span> ₪</span>
         </li>
-        <li class="prow rv">
+        <li class="prow">
           <span class="shape sh-eighth" aria-hidden="true"></span>
           <span><span class="name">שמינית עמוד</span><span class="dims"><span class="num">6×4</span></span></span>
           <span class="price"><span class="num">220</span> ₪</span>
         </li>
-        <li class="prow rv">
+        <li class="prow">
           <span class="shape sh-line" aria-hidden="true"></span>
           <span><span class="name">שורה באינדקס</span><span class="dims">קטגוריה · שם · כתובת · טלפון ומייל</span></span>
           <span class="price"><span class="num">100</span> ₪</span>
         </li>
       </ul>
-      <p class="pnote rv">
+      <p class="pnote">
         <span><b>תוספת גרפיקה בסיסית</b> — <span class="num">50</span> ₪</span>
         <span class="free">התאמה למדריך — חינם</span>
       </p>
-    </div>
-  </section>
 
-  <!-- send ready material -->
-  <section class="send">
-    <div class="wrap">
-      <div class="send-card rv">
+      <div class="send-card">
         <div>
-          <h2>יש לכם כבר מודעה מוכנה?</h2>
+          <h3>יש לכם כבר מודעה מוכנה?</h3>
           <p>שלחו אותה אלינו כמו שהיא — במייל או בווטסאפ — והיא תגיע ישירות לשולחן העריכה. ההתאמה למדריך עלינו, בחינם.</p>
         </div>
         <div class="btns">
-          <a class="btn btn-navy" href="https://wa.me/972504181682?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A6%D7%95%D7%A8%D7%A3%20%D7%97%D7%95%D7%9E%D7%A8%20%D7%9E%D7%95%D7%9B%D7%9F%20%D7%9C%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D" target="_blank" rel="noopener">לשלוח בווטסאפ</a>
-          <a class="btn btn-soft" href="mailto:eh600601@gmail.com?subject=%D7%97%D7%95%D7%9E%D7%A8%20%D7%9E%D7%95%D7%9B%D7%9F%20%D7%9C%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D">לשלוח במייל</a>
+          <a class="btn btn-gold" href="https://wa.me/972504181682?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A6%D7%95%D7%A8%D7%A3%20%D7%97%D7%95%D7%9E%D7%A8%20%D7%9E%D7%95%D7%9B%D7%9F%20%D7%9C%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D" target="_blank" rel="noopener">לשלוח בווטסאפ</a>
+          <a class="btn btn-line js-mail" href="mailto:eh600601@gmail.com?subject=%D7%97%D7%95%D7%9E%D7%A8%20%D7%9E%D7%95%D7%9B%D7%9F%20%D7%9C%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D">לשלוח במייל</a>
         </div>
       </div>
     </div>
@@ -449,11 +416,12 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
   <!-- when -->
   <section class="when">
     <div class="wrap">
-      <h2 class="rv">איך זה מגיע לבתים</h2>
-      <div class="grid">
-        <div class="fact rv"><span class="label">מתי</span><p>יוצא לאור בתחילת שנת תשפ״ז</p></div>
-        <div class="fact rv"><span class="label">לאן</span><p>הפצה ישירה לכל בית ועסק בשכונה</p></div>
-        <div class="fact rv"><span class="label">וגם</span><p>לכל בית חדש שמתאכלס במהלך השנה</p></div>
+      <div class="row">
+        <span class="item"><span class="label">מתי</span>יוצא לאור בתחילת שנת תשפ״ז</span>
+        <span class="sep" aria-hidden="true">◆</span>
+        <span class="item"><span class="label">לאן</span>לכל בית ועסק בשכונה</span>
+        <span class="sep" aria-hidden="true">◆</span>
+        <span class="item"><span class="label">וגם</span>לכל בית שמתאכלס במהלך השנה</span>
       </div>
     </div>
   </section>
@@ -474,7 +442,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
             <span class="num">050-4181682</span>
           </a>
         </div>
-        <p class="alt-mail">אפשר גם במייל: <a href="mailto:eh600601@gmail.com"><span class="num">eh600601@gmail.com</span></a></p>
+        <p class="alt-mail">אפשר גם במייל: <a class="js-mail" href="mailto:eh600601@gmail.com?subject=%D7%A4%D7%A0%D7%99%D7%99%D7%94%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%E2%80%94%20%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D"><span class="num">eh600601@gmail.com</span></a></p>
       </div>
     </div>
   </section>
@@ -501,14 +469,30 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 
 <script>
 (function(){
+  /* מייל: בדסקטופ נפתחת טיוטת Gmail בדפדפן; בנייד נשארת אפליקציית המייל */
+  var mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (!mobile) {
+    document.addEventListener('click', function(ev){
+      var a = ev.target.closest('a.js-mail');
+      if (!a) return;
+      ev.preventDefault();
+      var href = a.getAttribute('href');
+      var to = href.replace('mailto:','').split('?')[0];
+      var m = href.match(/[?&]subject=([^&]*)/);
+      var su = m ? m[1] : encodeURIComponent('פנייה — אקספו הסופרים');
+      window.open('https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(to) + '&su=' + su, '_blank', 'noopener');
+    });
+  }
+
+  /* חשיפה עדינה לפי מדורים */
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) return;
   document.documentElement.classList.add('js-anim');
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:.15});
+  }, {threshold:.12});
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
-  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 1600);
+  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 1500);
 })();
 </script>
 </body>
