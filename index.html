@@ -291,6 +291,23 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 .send-card p{color:rgba(255,255,255,.75);margin-top:6px;max-width:34em}
 .send-card .btns{display:flex;flex-wrap:wrap;gap:10px}
 
+/* ═══ פס אלפון תושבים ═══ */
+.resident{padding-block:0 clamp(46px,7vw,80px)}
+.res-card{
+  border:1px solid var(--mist-line);border-radius:var(--r);
+  background:rgba(255,255,255,.78);backdrop-filter:blur(6px);
+  box-shadow:0 14px 40px rgba(27,42,74,.07);
+  padding:clamp(24px,4vw,38px);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;
+}
+.res-card .kick{
+  display:inline-block;font-family:'Rubik',sans-serif;font-weight:600;font-size:.8rem;
+  color:var(--gold-deep);border:1px solid rgba(201,162,75,.45);border-radius:999px;padding:4px 13px;
+}
+.res-card h2{font-size:clamp(1.4rem,3.2vw,2rem);margin-top:12px}
+.res-card p{color:var(--muted);margin-top:8px;max-width:36em}
+@media (max-width:760px){ .res-card{grid-template-columns:1fr} }
+
 /* ═══ סגירה ═══ */
 .finale{padding-block:0 clamp(56px,8vw,100px);text-align:center}
 .finale .hook2{font-size:clamp(2.2rem,6.6vw,4.4rem);line-height:1.1}
@@ -518,6 +535,20 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
       </div>
     </section>
   </div>
+
+  <!-- אלפון תושבים -->
+  <section class="resident">
+    <div class="wrap rv">
+      <div class="res-card">
+        <div>
+          <span class="kick">גרים במתחם הסופרים?</span>
+          <h2>הצטרפו ל<span class="goldtx">אלפון התושבים</span></h2>
+          <p>לצד אלפון העסקים אנחנו מרכזים גם אלפון תושבים. הרישום לוקח פחות מדקה, ואתם בפנים.</p>
+        </div>
+        <a class="btn btn-gold" href="alfon.html">לרישום באלפון</a>
+      </div>
+    </div>
+  </section>
 
   <!-- סגירה -->
   <section class="finale">
