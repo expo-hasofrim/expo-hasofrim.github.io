@@ -77,7 +77,7 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 }
 .hd.scrolled{border-bottom-color:var(--mist-line);box-shadow:0 8px 30px rgba(27,42,74,.07)}
 .hd .in{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:12px}
-.wordmark{display:flex;align-items:baseline;gap:8px;font-family:'Secular One',sans-serif;font-size:clamp(1rem,3.4vw,1.18rem);line-height:1.25;text-decoration:none;white-space:nowrap;padding-block:4px}
+.wordmark{display:flex;flex:none;align-items:center;gap:7px;font-family:'Secular One',sans-serif;font-size:clamp(1rem,3.4vw,1.18rem);line-height:1;text-decoration:none;white-space:nowrap;min-height:44px}
 .wordmark .b{color:var(--ink)}
 .hd .side{display:flex;align-items:center;gap:10px}
 .hd .tel-mini{font-family:'Rubik',sans-serif;font-weight:500;font-size:.92rem;color:var(--muted);text-decoration:none}
@@ -338,6 +338,9 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 @media (max-width:860px){
   .send-card{grid-template-columns:1fr}
   .hd .tel-mini{display:none}
+}
+@media (max-width:420px){
+  .hd .btn-sm{padding:9px 14px;font-size:.88rem}
 }
 @media (max-width:760px){
   .sides-grid{grid-template-columns:1fr}
