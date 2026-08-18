@@ -99,14 +99,20 @@ legend{
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-family:'Rubik',sans-serif;font-weight:500;font-size:.9rem;color:var(--ink)}
 .field label .opt{color:var(--muted);font-weight:400}
-.field input{
+.field input,.field select{
   font-family:'Assistant',sans-serif;font-size:1.02rem;color:var(--ink);
   background:var(--paper);border:1.5px solid var(--mist-line);border-radius:12px;
   padding:12px 14px;min-height:50px;width:100%;
   transition:border-color .16s ease,box-shadow .16s ease;
 }
-.field input:hover{border-color:#C6CEDE}
-.field input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,162,75,.16)}
+.field input:hover,.field select:hover{border-color:#C6CEDE}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,162,75,.16)}
+.field select{
+  appearance:none;cursor:pointer;padding-inline-end:38px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%235A6478' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:left 12px center;background-size:20px;
+}
+.field select:invalid{color:var(--muted)}
 .field input[type=tel]{direction:ltr;text-align:right;font-family:'Rubik',sans-serif;font-variant-numeric:tabular-nums}
 .field input:user-invalid{border-color:var(--err)}
 .hint{font-family:'Rubik',sans-serif;font-size:.8rem;color:var(--muted)}
@@ -232,9 +238,19 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 
     <fieldset>
       <legend>כתובת</legend>
-      <div class="choice">
-        <label><input type="radio" name="בניין" value="600 — שבט הלוי" required><span>600 — שבט הלוי</span></label>
-        <label><input type="radio" name="בניין" value="601 — חזון עובדיה"><span>601 — חזון עובדיה</span></label>
+      <div class="grid">
+        <div class="field">
+          <label for="street">רחוב</label>
+          <select id="street" name="רחוב" required>
+            <option value="" disabled selected>בחרו רחוב</option>
+            <option value="600 — שבט הלוי">600 — שבט הלוי</option>
+            <option value="601 — חזון עובדיה">601 — חזון עובדיה</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="building">בניין</label>
+          <input id="building" name="בניין" class="onlynum" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="4" autocomplete="off" required>
+        </div>
       </div>
       <div class="grid four" style="margin-top:14px">
         <div class="field">
@@ -329,10 +345,10 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 
   function collect(){
     var problems = [];
-    var required = [['fname','שם פרטי'],['lname','שם משפחה'],['floor','קומה'],['apt','דירה']];
+    var required = [['fname','שם פרטי'],['lname','שם משפחה'],['street','רחוב'],['building','בניין'],['floor','קומה'],['apt','דירה']];
     required.forEach(function(r){ if (!val(r[0])) problems.push(r[1]); });
 
-    [['floor','קומה'],['apt','דירה']].forEach(function(n){
+    [['building','בניין'],['floor','קומה'],['apt','דירה']].forEach(function(n){
       var v = val(n[0]);
       if (v && !/^[0-9]+$/.test(v)) problems.push(n[1] + ' — מספרים בלבד');
     });
@@ -342,9 +358,6 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
     phones.forEach(function(p){
       if (p.replace(/[^0-9]/g,'').length < 9) problems.push('מספר טלפון קצר מדי: ' + p);
     });
-
-    var bld = f.querySelector('input[name="בניין"]:checked');
-    if (!bld) problems.push('בניין');
 
     var status = f.querySelector('input[name="מעמד"]:checked');
     if (!status) problems.push('בעל הנכס או שוכר');
@@ -362,7 +375,7 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
       kind + ' — אלפון תושבים, מתחם הסופרים',
       '',
       'שם: ' + val('fname') + ' ' + val('lname'),
-      'כתובת: בניין ' + bld.value + ', קומה ' + val('floor') + ', דירה ' + val('apt')
+      'כתובת: ' + val('street') + ', בניין ' + val('building') + ', קומה ' + val('floor') + ', דירה ' + val('apt')
     ];
     if (val('thome'))  lines.push('טלפון בבית: ' + val('thome'));
     if (val('tman'))   lines.push('נייד הבעל: ' + val('tman'));
