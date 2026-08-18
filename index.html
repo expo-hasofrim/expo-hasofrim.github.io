@@ -52,17 +52,22 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
 
 /* ═══ אווירה גלובלית — לא עוד לבן מת ═══ */
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.055'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .atmo{position:fixed;inset:0;z-index:-2;pointer-events:none;background:var(--bg)}
 .atmo::before{
   content:"";position:absolute;inset:0;
   background:
-    radial-gradient(52vw 46vh at 85% -6%,rgba(201,162,75,.16),transparent 62%),
-    radial-gradient(46vw 40vh at 4% 16%,rgba(27,42,74,.10),transparent 60%),
-    radial-gradient(60vw 50vh at 50% 110%,rgba(27,42,74,.08),transparent 55%);
+    radial-gradient(58vw 52vh at 88% -8%,rgba(201,162,75,.30),transparent 62%),
+    radial-gradient(50vw 44vh at 0% 10%,rgba(27,42,74,.17),transparent 60%),
+    radial-gradient(42vw 36vh at 74% 46%,rgba(229,200,120,.14),transparent 62%),
+    radial-gradient(38vw 34vh at 12% 72%,rgba(27,42,74,.10),transparent 60%),
+    radial-gradient(64vw 54vh at 46% 112%,rgba(143,106,31,.13),transparent 58%),
+    linear-gradient(180deg,#F5F7FC 0%,#FAFBFD 34%,#F7F4EC 100%);
 }
 .atmo::after{
   content:"";position:absolute;inset:0;opacity:.5;
-  background-image:radial-gradient(rgba(27,42,74,.13) 1px,transparent 1px);
+  background-image:radial-gradient(rgba(27,42,74,.17) 1px,transparent 1px);
   background-size:26px 26px;
   mask-image:radial-gradient(75vw 90vh at 50% 0%,#000 30%,transparent 75%);
   -webkit-mask-image:radial-gradient(75vw 90vh at 50% 0%,#000 30%,transparent 75%);
@@ -109,6 +114,8 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 
 /* ═══ הירו ═══ */
 .hero{padding-block:clamp(30px,5vw,64px) clamp(30px,4vw,52px);text-align:center;position:relative}
+.hero::before{content:"";position:absolute;inset-inline:0;top:-14%;height:114%;z-index:-1;pointer-events:none;
+  background:radial-gradient(46% 52% at 50% 34%,rgba(229,200,120,.22),transparent 70%)}
 .logo-crop{display:block;width:clamp(210px,34vw,300px);aspect-ratio:512/340;overflow:hidden;margin-inline:auto}
 .logo-img{width:100%;height:auto;display:block;mix-blend-mode:multiply}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
@@ -140,7 +147,10 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 .fchip .d{width:7px;height:7px;border-radius:50%;background:var(--grad-gold);flex:none}
 
 /* ═══ שני צדדים ═══ */
-.sides{padding-block:clamp(48px,7vw,84px) 0}
+.sides{padding-block:clamp(48px,7vw,84px) clamp(44px,6vw,72px);position:relative}
+.sides::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,transparent,rgba(27,42,74,.05) 16%,rgba(201,162,75,.05) 84%,transparent);
+  border-block:1px solid rgba(27,42,74,.05)}
 .sec-head h2{font-size:clamp(2rem,5vw,3.1rem)}
 .sec-head p{margin-top:10px;color:var(--muted);font-size:1.08rem;max-width:36em}
 .sides-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,26px);margin-top:clamp(26px,4vw,40px)}
@@ -170,14 +180,18 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 .panel-biz .you .dot{width:9px;height:9px;border-radius:50%;background:var(--grad-gold);flex:none}
 
 /* ═══ קטגוריות — מרקיזה נעה ═══ */
-.cats{padding-block:clamp(48px,7vw,84px) clamp(40px,6vw,70px)}
+.cats{padding-block:clamp(48px,7vw,84px) clamp(40px,6vw,70px);position:relative;overflow:hidden}
+.cats::before{content:"אקספו";position:absolute;top:-.12em;inset-inline-start:50%;transform:translateX(50%);
+  font-family:'Secular One',sans-serif;font-size:clamp(9rem,26vw,22rem);line-height:1;z-index:-1;
+  color:transparent;-webkit-text-stroke:1.5px rgba(27,42,74,.07);pointer-events:none;user-select:none}
 .cats .sec-head{text-align:center}
 .cats .sec-head p{margin-inline:auto}
 .marquee{margin-top:clamp(26px,4vw,38px);display:grid;gap:14px;overflow:hidden;
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
 }
-.mrow{display:flex;gap:12px;width:max-content}
+.mrow{display:flex;width:max-content}
+.mrow span{margin-inline-start:12px}
 .mrow span{
   flex:none;background:var(--paper);border:1px solid var(--mist-line);border-radius:999px;
   padding:11px 22px;font-weight:600;font-size:.98rem;color:var(--ink);
@@ -185,14 +199,14 @@ h1,h2,.disp{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.1
 }
 .mrow span b{color:var(--gold-deep);font-weight:600}
 @media (prefers-reduced-motion:no-preference){
-  .mrow{animation:slide 36s linear infinite}
-  .mrow.rev{animation-direction:reverse;animation-duration:42s}
+  .mrow{animation:slide 190s linear infinite}
+  .mrow.rev{animation-direction:reverse;animation-duration:210s}
   .marquee:hover .mrow{animation-play-state:paused}
   @keyframes slide{from{transform:translateX(0)}to{transform:translateX(50%)}}
 }
 @media (prefers-reduced-motion:reduce){
   .marquee{mask-image:none;-webkit-mask-image:none}
-  .mrow{flex-wrap:wrap;width:auto;justify-content:center}
+  .mrow{flex-wrap:wrap;width:auto;justify-content:center;row-gap:10px}
   .mrow .dup{display:none}
 }
 
@@ -417,6 +431,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 </head>
 <body>
 <div class="atmo" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 <div class="prog" aria-hidden="true"><i id="progBar"></i></div>
 
 <header class="hd" id="hd">
@@ -510,11 +525,27 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
     <div class="marquee rv" aria-label="קטגוריות עסקים">
       <div class="mrow">
         <span>תיווך <b>ויזמות</b></span><span>אדריכלות <b>ועיצוב פנים</b></span><span>מטבחים <b>וארונות</b></span><span>שיפוצים <b>ותיקונים</b></span><span>תאורה <b>ומיזוג</b></span><span>הובלות</span><span>בדק <b>ונקיון</b></span>
-        <span class="dup">תיווך <b>ויזמות</b></span><span class="dup">אדריכלות <b>ועיצוב פנים</b></span><span class="dup">מטבחים <b>וארונות</b></span><span class="dup">שיפוצים <b>ותיקונים</b></span><span class="dup">תאורה <b>ומיזוג</b></span><span class="dup">הובלות</span><span class="dup">בדק <b>ונקיון</b></span>
+        <span class="dup" aria-hidden="true">תיווך <b>ויזמות</b></span><span class="dup" aria-hidden="true">אדריכלות <b>ועיצוב פנים</b></span><span class="dup" aria-hidden="true">מטבחים <b>וארונות</b></span><span class="dup" aria-hidden="true">שיפוצים <b>ותיקונים</b></span><span class="dup" aria-hidden="true">תאורה <b>ומיזוג</b></span><span class="dup" aria-hidden="true">הובלות</span><span class="dup" aria-hidden="true">בדק <b>ונקיון</b></span>
+        <span class="dup" aria-hidden="true">תיווך <b>ויזמות</b></span><span class="dup" aria-hidden="true">אדריכלות <b>ועיצוב פנים</b></span><span class="dup" aria-hidden="true">מטבחים <b>וארונות</b></span><span class="dup" aria-hidden="true">שיפוצים <b>ותיקונים</b></span><span class="dup" aria-hidden="true">תאורה <b>ומיזוג</b></span><span class="dup" aria-hidden="true">הובלות</span><span class="dup" aria-hidden="true">בדק <b>ונקיון</b></span>
+        <span class="dup" aria-hidden="true">תיווך <b>ויזמות</b></span><span class="dup" aria-hidden="true">אדריכלות <b>ועיצוב פנים</b></span><span class="dup" aria-hidden="true">מטבחים <b>וארונות</b></span><span class="dup" aria-hidden="true">שיפוצים <b>ותיקונים</b></span><span class="dup" aria-hidden="true">תאורה <b>ומיזוג</b></span><span class="dup" aria-hidden="true">הובלות</span><span class="dup" aria-hidden="true">בדק <b>ונקיון</b></span>
+        <span class="dup" aria-hidden="true">תיווך <b>ויזמות</b></span><span class="dup" aria-hidden="true">אדריכלות <b>ועיצוב פנים</b></span><span class="dup" aria-hidden="true">מטבחים <b>וארונות</b></span><span class="dup" aria-hidden="true">שיפוצים <b>ותיקונים</b></span><span class="dup" aria-hidden="true">תאורה <b>ומיזוג</b></span><span class="dup" aria-hidden="true">הובלות</span><span class="dup" aria-hidden="true">בדק <b>ונקיון</b></span>
+        <span class="dup" aria-hidden="true">תיווך <b>ויזמות</b></span><span class="dup" aria-hidden="true">אדריכלות <b>ועיצוב פנים</b></span><span class="dup" aria-hidden="true">מטבחים <b>וארונות</b></span><span class="dup" aria-hidden="true">שיפוצים <b>ותיקונים</b></span><span class="dup" aria-hidden="true">תאורה <b>ומיזוג</b></span><span class="dup" aria-hidden="true">הובלות</span><span class="dup" aria-hidden="true">בדק <b>ונקיון</b></span>
+        <span class="dup" aria-hidden="true">תיווך <b>ויזמות</b></span><span class="dup" aria-hidden="true">אדריכלות <b>ועיצוב פנים</b></span><span class="dup" aria-hidden="true">מטבחים <b>וארונות</b></span><span class="dup" aria-hidden="true">שיפוצים <b>ותיקונים</b></span><span class="dup" aria-hidden="true">תאורה <b>ומיזוג</b></span><span class="dup" aria-hidden="true">הובלות</span><span class="dup" aria-hidden="true">בדק <b>ונקיון</b></span>
+        <span class="dup" aria-hidden="true">תיווך <b>ויזמות</b></span><span class="dup" aria-hidden="true">אדריכלות <b>ועיצוב פנים</b></span><span class="dup" aria-hidden="true">מטבחים <b>וארונות</b></span><span class="dup" aria-hidden="true">שיפוצים <b>ותיקונים</b></span><span class="dup" aria-hidden="true">תאורה <b>ומיזוג</b></span><span class="dup" aria-hidden="true">הובלות</span><span class="dup" aria-hidden="true">בדק <b>ונקיון</b></span>
+        <span class="dup" aria-hidden="true">תיווך <b>ויזמות</b></span><span class="dup" aria-hidden="true">אדריכלות <b>ועיצוב פנים</b></span><span class="dup" aria-hidden="true">מטבחים <b>וארונות</b></span><span class="dup" aria-hidden="true">שיפוצים <b>ותיקונים</b></span><span class="dup" aria-hidden="true">תאורה <b>ומיזוג</b></span><span class="dup" aria-hidden="true">הובלות</span><span class="dup" aria-hidden="true">בדק <b>ונקיון</b></span>
+        <span class="dup" aria-hidden="true">תיווך <b>ויזמות</b></span><span class="dup" aria-hidden="true">אדריכלות <b>ועיצוב פנים</b></span><span class="dup" aria-hidden="true">מטבחים <b>וארונות</b></span><span class="dup" aria-hidden="true">שיפוצים <b>ותיקונים</b></span><span class="dup" aria-hidden="true">תאורה <b>ומיזוג</b></span><span class="dup" aria-hidden="true">הובלות</span><span class="dup" aria-hidden="true">בדק <b>ונקיון</b></span>
       </div>
       <div class="mrow rev">
         <span>דלתות <b>ורהיטים</b></span><span>אביזרי <b>בית וגינות</b></span><span>חברות <b>ניהול</b></span><span>מיגון <b>ואבטחה</b></span><span>סורגים <b>ורשתות</b></span><span>תקשורת</span><span>ועוד…</span>
-        <span class="dup">דלתות <b>ורהיטים</b></span><span class="dup">אביזרי <b>בית וגינות</b></span><span class="dup">חברות <b>ניהול</b></span><span class="dup">מיגון <b>ואבטחה</b></span><span class="dup">סורגים <b>ורשתות</b></span><span class="dup">תקשורת</span><span class="dup">ועוד…</span>
+        <span class="dup" aria-hidden="true">דלתות <b>ורהיטים</b></span><span class="dup" aria-hidden="true">אביזרי <b>בית וגינות</b></span><span class="dup" aria-hidden="true">חברות <b>ניהול</b></span><span class="dup" aria-hidden="true">מיגון <b>ואבטחה</b></span><span class="dup" aria-hidden="true">סורגים <b>ורשתות</b></span><span class="dup" aria-hidden="true">תקשורת</span><span class="dup" aria-hidden="true">ועוד…</span>
+        <span class="dup" aria-hidden="true">דלתות <b>ורהיטים</b></span><span class="dup" aria-hidden="true">אביזרי <b>בית וגינות</b></span><span class="dup" aria-hidden="true">חברות <b>ניהול</b></span><span class="dup" aria-hidden="true">מיגון <b>ואבטחה</b></span><span class="dup" aria-hidden="true">סורגים <b>ורשתות</b></span><span class="dup" aria-hidden="true">תקשורת</span><span class="dup" aria-hidden="true">ועוד…</span>
+        <span class="dup" aria-hidden="true">דלתות <b>ורהיטים</b></span><span class="dup" aria-hidden="true">אביזרי <b>בית וגינות</b></span><span class="dup" aria-hidden="true">חברות <b>ניהול</b></span><span class="dup" aria-hidden="true">מיגון <b>ואבטחה</b></span><span class="dup" aria-hidden="true">סורגים <b>ורשתות</b></span><span class="dup" aria-hidden="true">תקשורת</span><span class="dup" aria-hidden="true">ועוד…</span>
+        <span class="dup" aria-hidden="true">דלתות <b>ורהיטים</b></span><span class="dup" aria-hidden="true">אביזרי <b>בית וגינות</b></span><span class="dup" aria-hidden="true">חברות <b>ניהול</b></span><span class="dup" aria-hidden="true">מיגון <b>ואבטחה</b></span><span class="dup" aria-hidden="true">סורגים <b>ורשתות</b></span><span class="dup" aria-hidden="true">תקשורת</span><span class="dup" aria-hidden="true">ועוד…</span>
+        <span class="dup" aria-hidden="true">דלתות <b>ורהיטים</b></span><span class="dup" aria-hidden="true">אביזרי <b>בית וגינות</b></span><span class="dup" aria-hidden="true">חברות <b>ניהול</b></span><span class="dup" aria-hidden="true">מיגון <b>ואבטחה</b></span><span class="dup" aria-hidden="true">סורגים <b>ורשתות</b></span><span class="dup" aria-hidden="true">תקשורת</span><span class="dup" aria-hidden="true">ועוד…</span>
+        <span class="dup" aria-hidden="true">דלתות <b>ורהיטים</b></span><span class="dup" aria-hidden="true">אביזרי <b>בית וגינות</b></span><span class="dup" aria-hidden="true">חברות <b>ניהול</b></span><span class="dup" aria-hidden="true">מיגון <b>ואבטחה</b></span><span class="dup" aria-hidden="true">סורגים <b>ורשתות</b></span><span class="dup" aria-hidden="true">תקשורת</span><span class="dup" aria-hidden="true">ועוד…</span>
+        <span class="dup" aria-hidden="true">דלתות <b>ורהיטים</b></span><span class="dup" aria-hidden="true">אביזרי <b>בית וגינות</b></span><span class="dup" aria-hidden="true">חברות <b>ניהול</b></span><span class="dup" aria-hidden="true">מיגון <b>ואבטחה</b></span><span class="dup" aria-hidden="true">סורגים <b>ורשתות</b></span><span class="dup" aria-hidden="true">תקשורת</span><span class="dup" aria-hidden="true">ועוד…</span>
+        <span class="dup" aria-hidden="true">דלתות <b>ורהיטים</b></span><span class="dup" aria-hidden="true">אביזרי <b>בית וגינות</b></span><span class="dup" aria-hidden="true">חברות <b>ניהול</b></span><span class="dup" aria-hidden="true">מיגון <b>ואבטחה</b></span><span class="dup" aria-hidden="true">סורגים <b>ורשתות</b></span><span class="dup" aria-hidden="true">תקשורת</span><span class="dup" aria-hidden="true">ועוד…</span>
+        <span class="dup" aria-hidden="true">דלתות <b>ורהיטים</b></span><span class="dup" aria-hidden="true">אביזרי <b>בית וגינות</b></span><span class="dup" aria-hidden="true">חברות <b>ניהול</b></span><span class="dup" aria-hidden="true">מיגון <b>ואבטחה</b></span><span class="dup" aria-hidden="true">סורגים <b>ורשתות</b></span><span class="dup" aria-hidden="true">תקשורת</span><span class="dup" aria-hidden="true">ועוד…</span>
       </div>
     </div>
   </section>

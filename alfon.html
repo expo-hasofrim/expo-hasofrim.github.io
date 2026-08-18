@@ -199,6 +199,14 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 
   <form id="f" novalidate>
     <fieldset>
+      <legend>סוג הפנייה</legend>
+      <div class="choice">
+        <label><input type="radio" name="סוג" value="רישום חדש" checked><span>רישום חדש</span></label>
+        <label><input type="radio" name="סוג" value="עדכון פרטים"><span>עדכון פרטים קיימים</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
       <legend>פרטי המשפחה</legend>
       <div class="grid">
         <div class="field">
@@ -221,17 +229,17 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
         </div>
         <div class="field">
           <label for="building">בניין</label>
-          <input id="building" name="בניין" type="text" inputmode="numeric" required>
+          <input id="building" name="בניין" class="onlynum" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="4" autocomplete="off" required>
         </div>
       </div>
       <div class="grid four" style="margin-top:14px">
         <div class="field">
           <label for="floor">קומה</label>
-          <input id="floor" name="קומה" type="text" inputmode="numeric" required>
+          <input id="floor" name="קומה" class="onlynum" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="3" autocomplete="off" required>
         </div>
         <div class="field">
           <label for="apt">דירה</label>
-          <input id="apt" name="דירה" type="text" inputmode="numeric" required>
+          <input id="apt" name="דירה" class="onlynum" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="4" autocomplete="off" required>
         </div>
       </div>
     </fieldset>
@@ -242,15 +250,15 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
       <div class="grid" style="margin-top:12px">
         <div class="field">
           <label for="thome">טלפון בבית</label>
-          <input id="thome" name="טלפון בית" type="tel" inputmode="tel" autocomplete="tel">
+          <input id="thome" name="טלפון בית" class="onlyphone" type="tel" inputmode="tel" maxlength="15" autocomplete="tel">
         </div>
         <div class="field">
           <label for="tman">נייד של הבעל</label>
-          <input id="tman" name="טלפון איש" type="tel" inputmode="tel">
+          <input id="tman" name="טלפון איש" class="onlyphone" type="tel" inputmode="tel" maxlength="15" autocomplete="off">
         </div>
         <div class="field">
           <label for="twoman">נייד של האשה</label>
-          <input id="twoman" name="טלפון אשה" type="tel" inputmode="tel">
+          <input id="twoman" name="טלפון אשה" class="onlyphone" type="tel" inputmode="tel" maxlength="15" autocomplete="off">
         </div>
       </div>
     </fieldset>
@@ -299,6 +307,20 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
+  /* חסימת טקסט בשדות מספריים */
+  document.querySelectorAll('.onlynum').forEach(function(el){
+    el.addEventListener('input', function(){
+      var clean = el.value.replace(/[^0-9]/g,'');
+      if (clean !== el.value) el.value = clean;
+    });
+  });
+  document.querySelectorAll('.onlyphone').forEach(function(el){
+    el.addEventListener('input', function(){
+      var clean = el.value.replace(/[^0-9+() -]/g,'');
+      if (clean !== el.value) el.value = clean;
+    });
+  });
+
   function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; }
 
   function collect(){
@@ -306,8 +328,16 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
     var required = [['fname','שם פרטי'],['lname','שם משפחה'],['street','רחוב'],['building','בניין'],['floor','קומה'],['apt','דירה']];
     required.forEach(function(r){ if (!val(r[0])) problems.push(r[1]); });
 
+    [['building','בניין'],['floor','קומה'],['apt','דירה']].forEach(function(n){
+      var v = val(n[0]);
+      if (v && !/^[0-9]+$/.test(v)) problems.push(n[1] + ' — מספרים בלבד');
+    });
+
     var phones = [val('thome'), val('tman'), val('twoman')].filter(Boolean);
     if (!phones.length) problems.push('לפחות מספר טלפון אחד');
+    phones.forEach(function(p){
+      if (p.replace(/[^0-9]/g,'').length < 9) problems.push('מספר טלפון קצר מדי: ' + p);
+    });
 
     var status = f.querySelector('input[name="מעמד"]:checked');
     if (!status) problems.push('בעל הנכס או שוכר');
@@ -320,8 +350,9 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
     }
     errBox.classList.remove('on');
 
+    var kind = (f.querySelector('input[name="סוג"]:checked') || {}).value || 'רישום חדש';
     var lines = [
-      'רישום לאלפון התושבים — מתחם הסופרים',
+      kind + ' — אלפון תושבים, מתחם הסופרים',
       '',
       'שם: ' + val('fname') + ' ' + val('lname'),
       'כתובת: רחוב ' + val('street') + ', בניין ' + val('building') + ', קומה ' + val('floor') + ', דירה ' + val('apt')
@@ -339,6 +370,11 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
     done.classList.add('on');
     done.scrollIntoView({block:'center', behavior:'smooth'});
   }
+
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('send').click();
+  });
 
   document.getElementById('send').addEventListener('click', function(){
     var body = collect();
