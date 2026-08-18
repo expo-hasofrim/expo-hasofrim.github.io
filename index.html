@@ -334,6 +334,61 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 .js-anim .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .js-anim .rv.in{opacity:1;transform:none}
 
+
+/* ═══ תנועה ═══ */
+/* פס התקדמות גלילה */
+.prog{position:fixed;top:0;inset-inline:0;height:3px;z-index:80;background:transparent;pointer-events:none}
+.prog i{display:block;height:100%;width:0;background:var(--grad-gold);transition:width .1s linear}
+
+/* כוריאוגרפיית כניסה בהירו */
+.js-anim .intro{opacity:0;transform:translateY(18px)}
+.js-anim .intro.go{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,.7,.3,1),transform .7s cubic-bezier(.22,.7,.3,1)}
+
+/* חשיפה מדורגת של ילדים */
+.js-anim .stag > *{opacity:0;transform:translateY(14px)}
+.js-anim .stag.in > *{opacity:1;transform:none;transition:opacity .55s ease,transform .55s ease}
+.js-anim .stag.in > *:nth-child(1){transition-delay:0ms}
+.js-anim .stag.in > *:nth-child(2){transition-delay:70ms}
+.js-anim .stag.in > *:nth-child(3){transition-delay:140ms}
+.js-anim .stag.in > *:nth-child(4){transition-delay:210ms}
+.js-anim .stag.in > *:nth-child(5){transition-delay:280ms}
+
+/* זרקור שעוקב אחרי הסמן בכרטיסים הכהים */
+.dark-card{--mx:50%;--my:0%}
+.dark-card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:radial-gradient(340px circle at var(--mx) var(--my),rgba(229,200,120,.13),transparent 70%);
+  transition:opacity .35s ease;
+}
+.dark-card.lit::after{opacity:1}
+
+/* קלף מחירון: הרמה + זוהר */
+.tier{will-change:transform}
+.tier .shape{transition:transform .25s ease}
+.tier:hover .shape{transform:scale(1.12)}
+
+/* חזרה למעלה */
+.toTop{
+  position:fixed;inset-inline-start:18px;bottom:18px;z-index:65;
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(27,42,74,.9);color:#fff;border:1px solid rgba(201,162,75,.4);
+  cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease,background .2s ease;
+  backdrop-filter:blur(8px);
+}
+.toTop.on{opacity:1;transform:none;pointer-events:auto}
+.toTop:hover{background:var(--ink)}
+.toTop svg{width:20px;height:20px}
+@media (max-width:760px){ .toTop{bottom:86px} }
+
+@media (prefers-reduced-motion:reduce){
+  .prog i{transition:none}
+  .js-anim .intro,.js-anim .stag > *{opacity:1;transform:none;transition:none}
+  .dark-card::after{display:none}
+  .tier .shape{transition:none}
+  .toTop{transition:none}
+}
+
 /* ═══ רספונסיב ═══ */
 @media (max-width:860px){
   .send-card{grid-template-columns:1fr}
@@ -362,6 +417,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 </head>
 <body>
 <div class="atmo" aria-hidden="true"></div>
+<div class="prog" aria-hidden="true"><i id="progBar"></i></div>
 
 <header class="hd" id="hd">
   <div class="wrap in">
@@ -379,17 +435,17 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
   <!-- הירו -->
   <section class="hero">
     <div class="wrap">
-      <h1>
+      <h1 class="intro">
         <span class="logo-crop"><img class="logo-img" src="assets/expo-logo.png" alt="אקספו הסופרים" width="512" height="512"></span>
         <span class="visually-hidden">אקספו הסופרים</span>
         <span class="tagline">מרכז מידע ועסקים · מתחם הסופרים ב״ב</span>
       </h1>
-      <p class="hook">בכל בית בשכונה.<br><span class="goldtx">כל השנה.</span></p>
-      <p class="lede">
+      <p class="hook intro">בכל בית בשכונה.<br><span class="goldtx">כל השנה.</span></p>
+      <p class="lede intro">
         המדריך המודפס של מתחם הסופרים יושב על השיש של כל משפחה —<br>
         <strong>ומודעה אחת בו עובדת בשבילכם 365 ימים.</strong>
       </p>
-      <div class="cta-row">
+      <div class="cta-row intro">
         <a class="btn btn-gold" href="https://wa.me/972504181682?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%A1%D7%95%D7%9D%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D" target="_blank" rel="noopener">
           <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.1.6 4.2 1.7 6L4 29l8.3-1.6c1.2.6 2.4.9 3.7.9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm5.9 16.6c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.2.3-4-.8-3.4-1.4-5.6-4.8-5.8-5-.2-.2-1.4-1.8-1.4-3.5s.9-2.5 1.2-2.8c.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.5l1 2.4c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.4.4-.2.7.2.4.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.6.1.8-.1l1.2-1.4c.2-.3.5-.2.8-.1l2.2 1c.3.2.6.3.6.4.1.2.1.8-.2 1.5z"/></svg>
           שריינו מקום בווטסאפ
@@ -403,7 +459,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
           <span class="num">eh600601@gmail.com</span>
         </a>
       </div>
-      <div class="factbar" aria-label="עובדות מרכזיות">
+      <div class="factbar intro" aria-label="עובדות מרכזיות">
         <span class="fchip"><span class="d"></span>יוצא לאור בתחילת תשפ״ז</span>
         <span class="fchip"><span class="d"></span>הפצה לכל בית ועסק בשכונה</span>
         <span class="fchip"><span class="d"></span>וגם לכל בית שמתאכלס בהמשך</span>
@@ -418,7 +474,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
         <h2>מדריך אחד. <span class="goldtx">שני צדדים.</span></h2>
         <p>פותחים מצד אחד — מוצאים את הקהילה. הופכים את המדריך — מוצאים את העסקים.</p>
       </div>
-      <div class="sides-grid">
+      <div class="sides-grid stag rv">
         <div class="panel panel-com">
           <h3>צד הקהילה</h3>
           <p class="sub">כל המידע החיוני לתושב</p>
@@ -482,7 +538,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
     <section class="dark-card pricing rv">
       <h2>מחירון <span class="goldtx">מהדורת תשפ״ז</span></h2>
       <p class="sec-sub">מחירי היכרות למהדורה הראשונה · המידות בס״מ</p>
-      <ul class="tiers">
+      <ul class="tiers stag rv">
         <li class="tier star">
           <span class="badge">הכי בולט</span>
           <span class="shape sh-full" aria-hidden="true"></span>
@@ -573,6 +629,10 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
   </section>
 </main>
 
+<button class="toTop" id="toTop" type="button" aria-label="חזרה לראש העמוד">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 5.8 5.4 12.4 6.8 13.8 11 9.6V19h2V9.6l4.2 4.2 1.4-1.4z" transform="rotate(180 12 12)"/></svg>
+</button>
+
 <footer>
   <div class="wrap row">
     <span>אקספו הסופרים · מרכז מידע ועסקים · תשפ״ז</span>
@@ -608,21 +668,60 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
     });
   }
 
-  /* הדר: צל אחרי גלילה */
-  var hd = document.getElementById('hd');
-  var onScroll = function(){ hd.classList.toggle('scrolled', window.scrollY > 8); };
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* חשיפה עדינה */
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  /* הדר, פס התקדמות, וכפתור חזרה למעלה — מאזין גלילה אחד */
+  var hd = document.getElementById('hd');
+  var bar = document.getElementById('progBar');
+  var top = document.getElementById('toTop');
+  var ticking = false;
+  function frame(){
+    var y = window.scrollY;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    hd.classList.toggle('scrolled', y > 8);
+    if (bar) bar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+    if (top) top.classList.toggle('on', y > 600);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(frame); }
+  }, {passive:true});
+  frame();
+
+  if (top) top.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'});
+  });
+
+  if (reduce) return;
   if (!('IntersectionObserver' in window)) return;
   document.documentElement.classList.add('js-anim');
+
+  /* כניסת הירו — רצף מדורג */
+  var intro = [].slice.call(document.querySelectorAll('.intro'));
+  requestAnimationFrame(function(){
+    intro.forEach(function(el, i){ setTimeout(function(){ el.classList.add('go'); }, 90 + i * 110); });
+  });
+  setTimeout(function(){ intro.forEach(function(el){ el.classList.add('go'); }); }, 1800);
+
+  /* חשיפה בגלילה */
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:.1});
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
-  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 1500);
+  setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 1600);
+
+  /* זרקור שעוקב אחרי הסמן על הכרטיסים הכהים */
+  if (matchMedia('(hover: hover)').matches){
+    document.querySelectorAll('.dark-card').forEach(function(card){
+      card.addEventListener('pointermove', function(ev){
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (ev.clientY - r.top) + 'px');
+        card.classList.add('lit');
+      });
+      card.addEventListener('pointerleave', function(){ card.classList.remove('lit'); });
+    });
+  }
 })();
 </script>
 </body>

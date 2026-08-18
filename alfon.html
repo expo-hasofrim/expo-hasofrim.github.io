@@ -100,6 +100,12 @@ legend{
 .field input[type=tel]{direction:ltr;text-align:right;font-family:'Rubik',sans-serif;font-variant-numeric:tabular-nums}
 .field input:user-invalid{border-color:var(--err)}
 .hint{font-family:'Rubik',sans-serif;font-size:.8rem;color:var(--muted)}
+.hint.req{
+  display:inline-flex;align-items:center;gap:8px;font-size:.86rem;color:var(--gold-deep);
+  background:rgba(201,162,75,.10);border:1px solid rgba(201,162,75,.35);
+  border-radius:999px;padding:6px 14px;
+}
+.hint.req::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--grad-gold);flex:none}
 
 .choice{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
 .choice label{
@@ -232,18 +238,18 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 
     <fieldset>
       <legend>טלפונים</legend>
-      <p class="hint">אפשר למלא רק את מה שרלוונטי — לפחות מספר אחד.</p>
+      <p class="hint req">חובה למלא לפחות מספר אחד. אפשר יותר.</p>
       <div class="grid" style="margin-top:12px">
         <div class="field">
-          <label for="thome">טלפון בית <span class="opt">(לא חובה)</span></label>
+          <label for="thome">טלפון בבית</label>
           <input id="thome" name="טלפון בית" type="tel" inputmode="tel" autocomplete="tel">
         </div>
         <div class="field">
-          <label for="tman">טלפון איש <span class="opt">(לא חובה)</span></label>
+          <label for="tman">נייד של הבעל</label>
           <input id="tman" name="טלפון איש" type="tel" inputmode="tel">
         </div>
         <div class="field">
-          <label for="twoman">טלפון אשה <span class="opt">(לא חובה)</span></label>
+          <label for="twoman">נייד של האשה</label>
           <input id="twoman" name="טלפון אשה" type="tel" inputmode="tel">
         </div>
       </div>
@@ -320,9 +326,9 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
       'שם: ' + val('fname') + ' ' + val('lname'),
       'כתובת: רחוב ' + val('street') + ', בניין ' + val('building') + ', קומה ' + val('floor') + ', דירה ' + val('apt')
     ];
-    if (val('thome'))  lines.push('טלפון בית: ' + val('thome'));
-    if (val('tman'))   lines.push('טלפון איש: ' + val('tman'));
-    if (val('twoman')) lines.push('טלפון אשה: ' + val('twoman'));
+    if (val('thome'))  lines.push('טלפון בבית: ' + val('thome'));
+    if (val('tman'))   lines.push('נייד הבעל: ' + val('tman'));
+    if (val('twoman')) lines.push('נייד האשה: ' + val('twoman'));
     lines.push('מעמד: ' + status.value);
     lines.push('');
     return lines.join('\n');
