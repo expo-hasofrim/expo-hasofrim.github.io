@@ -232,15 +232,9 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 
     <fieldset>
       <legend>כתובת</legend>
-      <div class="grid">
-        <div class="field">
-          <label for="street">רחוב</label>
-          <input id="street" name="רחוב" type="text" autocomplete="address-line1" required>
-        </div>
-        <div class="field">
-          <label for="building">בניין</label>
-          <input id="building" name="בניין" class="onlynum" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="4" autocomplete="off" required>
-        </div>
+      <div class="choice">
+        <label><input type="radio" name="בניין" value="600 — שבט הלוי" required><span>600 — שבט הלוי</span></label>
+        <label><input type="radio" name="בניין" value="601 — חזון עובדיה"><span>601 — חזון עובדיה</span></label>
       </div>
       <div class="grid four" style="margin-top:14px">
         <div class="field">
@@ -335,10 +329,10 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 
   function collect(){
     var problems = [];
-    var required = [['fname','שם פרטי'],['lname','שם משפחה'],['street','רחוב'],['building','בניין'],['floor','קומה'],['apt','דירה']];
+    var required = [['fname','שם פרטי'],['lname','שם משפחה'],['floor','קומה'],['apt','דירה']];
     required.forEach(function(r){ if (!val(r[0])) problems.push(r[1]); });
 
-    [['building','בניין'],['floor','קומה'],['apt','דירה']].forEach(function(n){
+    [['floor','קומה'],['apt','דירה']].forEach(function(n){
       var v = val(n[0]);
       if (v && !/^[0-9]+$/.test(v)) problems.push(n[1] + ' — מספרים בלבד');
     });
@@ -348,6 +342,9 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
     phones.forEach(function(p){
       if (p.replace(/[^0-9]/g,'').length < 9) problems.push('מספר טלפון קצר מדי: ' + p);
     });
+
+    var bld = f.querySelector('input[name="בניין"]:checked');
+    if (!bld) problems.push('בניין');
 
     var status = f.querySelector('input[name="מעמד"]:checked');
     if (!status) problems.push('בעל הנכס או שוכר');
@@ -365,7 +362,7 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
       kind + ' — אלפון תושבים, מתחם הסופרים',
       '',
       'שם: ' + val('fname') + ' ' + val('lname'),
-      'כתובת: רחוב ' + val('street') + ', בניין ' + val('building') + ', קומה ' + val('floor') + ', דירה ' + val('apt')
+      'כתובת: בניין ' + bld.value + ', קומה ' + val('floor') + ', דירה ' + val('apt')
     ];
     if (val('thome'))  lines.push('טלפון בבית: ' + val('thome'));
     if (val('tman'))   lines.push('נייד הבעל: ' + val('tman'));
