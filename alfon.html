@@ -71,8 +71,8 @@ h1,h2{font-family:'Secular One',sans-serif;font-weight:400;line-height:1.14;text
 }
 .hd.scrolled{border-bottom-color:var(--mist-line);box-shadow:0 8px 30px rgba(27,42,74,.07)}
 .hd .in{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:12px}
-.wordmark{display:flex;align-items:baseline;gap:8px;font-family:'Secular One',sans-serif;font-size:1.12rem;line-height:1;text-decoration:none}
-.back{font-family:'Rubik',sans-serif;font-size:.9rem;color:var(--muted);text-decoration:none}
+.wordmark{display:flex;align-items:baseline;gap:8px;min-height:44px;align-content:center;flex-wrap:wrap;font-family:'Secular One',sans-serif;font-size:1.12rem;line-height:1;text-decoration:none}
+.back{font-family:'Rubik',sans-serif;font-size:.9rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 .back:hover{color:var(--ink)}
 
 .top-note{padding-block:clamp(26px,5vw,48px) 0;text-align:center}
@@ -286,7 +286,7 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
     <div class="err-box" id="err" role="alert"></div>
 
     <div class="actions">
-      <button type="button" class="btn btn-gold" id="send">
+      <button type="submit" class="btn btn-gold" id="send">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2.5 21 23 12 2.5 3 2.49 10l14.51 2-14.51 2z"/></svg>
         שליחת הרישום
       </button>
@@ -383,14 +383,12 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 
   f.addEventListener('submit', function(e){
     e.preventDefault();
-    document.getElementById('send').click();
-  });
-
-  document.getElementById('send').addEventListener('click', function(){
     var body = collect();
     if (!body) return;
-    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(body), '_blank', 'noopener');
+    var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(body);
+    var w = window.open(url, '_blank', 'noopener');
     finish();
+    if (!w) location.href = url;   // פופ-אפ נחסם — פותחים באותו טאב
   });
 
   document.getElementById('again').addEventListener('click', function(){
