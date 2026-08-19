@@ -121,7 +121,7 @@ h1,h2,.disp,.hook{font-family:'Secular One',sans-serif;font-weight:400;line-heig
 }
 .btn-gold:hover::after{transform:translateX(-120%)}
 .btn-gold:hover{box-shadow:0 14px 34px rgba(169,127,46,.45)}
-.btn-line{border-color:rgba(27,42,74,.28);color:var(--ink);background:rgba(255,255,255,.6)}
+.btn-line{border-color:rgba(27,42,74,.45);color:var(--ink);background:rgba(255,255,255,.72)}
 .btn-line:hover{border-color:var(--ink)}
 .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
 .btn-ghost:hover{background:rgba(255,255,255,.12)}
@@ -133,7 +133,7 @@ h1,h2,.disp,.hook{font-family:'Secular One',sans-serif;font-weight:400;line-heig
 .hero::before{content:"";position:absolute;inset-inline:0;top:-14%;height:114%;z-index:-1;pointer-events:none;
   background:radial-gradient(46% 52% at 50% 34%,rgba(229,200,120,.22),transparent 70%)}
 .logo-crop{display:block;width:clamp(210px,34vw,300px);aspect-ratio:512/340;overflow:hidden;margin-inline:auto}
-.logo-img{width:100%;height:auto;display:block;mix-blend-mode:multiply}
+.logo-img{width:100%;height:auto;display:block}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .tagline{
   display:block;font-family:'Rubik',sans-serif;font-weight:500;color:var(--ink);
@@ -517,7 +517,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
   <section class="hero">
     <div class="wrap">
       <h1 class="intro">
-        <span class="logo-crop"><img class="logo-img" src="assets/expo-logo.png" alt="" width="512" height="512"></span>
+        <span class="logo-crop"><img class="logo-img" src="assets/expo-logo.png" alt="" width="512" height="512" fetchpriority="high" decoding="async"></span>
         <span class="visually-hidden">אקספו הסופרים</span>
         <span class="tagline">מרכז מידע ועסקים · מתחם הסופרים, בני ברק</span>
       </h1>
