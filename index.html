@@ -103,13 +103,6 @@ h1,h2,.disp,.hook{font-family:'Secular One',sans-serif;font-weight:400;line-heig
 .hd .side{display:flex;align-items:center;gap:10px}
 .hd .tel-mini{font-family:'Rubik',sans-serif;font-weight:500;font-size:.92rem;color:var(--muted);text-decoration:none}
 .hd .tel-mini:hover{color:var(--ink)}
-.hd .alfon-mini{
-  font-family:'Rubik',sans-serif;font-weight:600;font-size:.92rem;
-  color:var(--gold-deep);text-decoration:none;
-  border-bottom:1.5px solid rgba(201,162,75,.45);padding-bottom:2px;
-  display:inline-flex;align-items:center;min-height:44px;
-}
-.hd .alfon-mini:hover{color:var(--ink);border-color:var(--ink)}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   min-height:52px;padding:12px 26px;border-radius:999px;
@@ -359,6 +352,32 @@ h1,h2,.disp,.hook{font-family:'Secular One',sans-serif;font-weight:400;line-heig
   padding:clamp(24px,4vw,38px);
   display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;
 }
+.res-card{position:relative;overflow:hidden}
+/* הילה זהובה רכה שנוסעת על פני הכרטיס — פעמיים, כשמגיעים אליו */
+.js-anim .resident .rv.in .res-card::before{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(105deg,transparent 35%,rgba(229,200,120,.34) 50%,transparent 65%);
+  transform:translateX(-120%);
+  animation:resSheen 1.5s ease-out .35s 2;
+}
+@keyframes resSheen{ to{ transform:translateX(120%); } }
+
+/* הכפתור פועם פעמיים ואז נרגע */
+.js-anim .resident .rv.in .btn-gold{
+  animation:resPulse 1.7s ease-out .4s 2;
+}
+@keyframes resPulse{
+  0%   { box-shadow:0 0 0 0 rgba(201,162,75,.55); }
+  55%  { box-shadow:0 0 0 16px rgba(201,162,75,0); }
+  100% { box-shadow:0 0 0 0 rgba(201,162,75,0); }
+}
+
+/* המסגרת נדלקת ונשארת מעט חמה */
+.js-anim .resident .rv.in .res-card{
+  border-color:rgba(201,162,75,.5);
+  box-shadow:0 18px 46px rgba(201,162,75,.18);
+  transition:border-color .8s ease .3s, box-shadow .8s ease .3s;
+}
 .res-card .kick{
   display:inline-block;font-family:'Rubik',sans-serif;font-weight:600;font-size:.8rem;
   color:var(--gold-deep);border:1px solid rgba(201,162,75,.45);border-radius:999px;padding:4px 13px;
@@ -453,7 +472,6 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
   .send-card{grid-template-columns:1fr}
   .hd .tel-mini{display:none}
 }
-@media (max-width:560px){ .hd .alfon-mini{display:none} }
 @media (max-width:420px){
   .hd .btn-sm{padding:9px 14px;font-size:.88rem}
 }
@@ -470,6 +488,8 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js-anim .rv{opacity:1;transform:none;transition:none}
+  .js-anim .resident .rv.in .res-card::before,
+  .js-anim .resident .rv.in .btn-gold{animation:none}
   .btn,.panel,.tier{transition:none}
   .btn-gold::after{display:none}
 }
@@ -486,7 +506,6 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
       <span class="b">אקספו</span><span class="goldtx">הסופרים</span>
     </a>
     <div class="side">
-      <a class="alfon-mini" href="alfon.html">אלפון תושבים</a>
       <a class="tel-mini num" href="tel:+972504181682">050-4181682</a>
       <a class="btn btn-gold btn-sm" href="https://wa.me/972504181682?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%A1%D7%95%D7%9D%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D" target="_blank" rel="noopener">שריינו מקום</a>
     </div>
