@@ -108,16 +108,16 @@ h1,h2,.disp,.hook{font-family:'Secular One',sans-serif;font-weight:400;line-heig
   min-height:52px;padding:12px 26px;border-radius:999px;
   font-family:'Assistant',sans-serif;font-weight:700;font-size:1.02rem;
   text-decoration:none;border:1.5px solid transparent;
-  position:relative;overflow:hidden;
+  position:relative;isolation:isolate;
   transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease,border-color .18s ease;
 }
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(1px)}
 .btn-gold{background:var(--grad-gold);color:var(--ink-dark);box-shadow:0 10px 26px rgba(169,127,46,.35)}
 .btn-gold::after{
-  content:"";position:absolute;inset:0;
+  content:"";position:absolute;inset:0;border-radius:inherit;overflow:hidden;
   background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.55) 50%,transparent 62%);
-  transform:translateX(120%);transition:transform .6s ease;
+  transform:translateX(120%);transition:transform .6s ease;pointer-events:none;
 }
 .btn-gold:hover::after{transform:translateX(-120%)}
 .btn-gold:hover{box-shadow:0 14px 34px rgba(169,127,46,.45)}
@@ -523,7 +523,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
       </h1>
       <p class="hook intro">בכל בית בשכונה.<br><span class="goldtx">כל השנה.</span></p>
       <p class="lede intro">
-        המדריך המודפס של מתחם הסופרים יושב על השיש של כל משפחה —<br>
+        המדריך המודפס של מתחם הסופרים יושב על השיש במטבח, בכל בית בשכונה —<br>
         <strong>ומודעה אחת בו עובדת בשבילכם 365 ימים.</strong>
       </p>
       <div class="cta-row intro">
@@ -536,7 +536,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
           <span class="num">050-4181682</span>
         </a>
         <a class="btn btn-line js-mail" href="mailto:eh600601@gmail.com?subject=%D7%A4%D7%A0%D7%99%D7%99%D7%94%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%E2%80%94%20%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 5h16c.6 0 1 .4 1 1v12c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1V6c0-.6.4-1 1-1zm8 7.2L5.2 7h13.6L12 12.2zM5 9.1V17h14V9.1l-7 5.3-7-5.3z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
           <span class="num">eh600601@gmail.com</span>
         </a>
       </div>
