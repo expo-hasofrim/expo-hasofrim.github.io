@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>אלפון תושבים — מתחם הסופרים, צפון בני ברק</title>
-<meta name="description" content="אלפון התושבים של מתחם הסופרים בצפון בני ברק — רישום ועדכון פרטים למדריך השנתי של השכונה, אקספו הסופרים. המילוי לוקח דקה.">
+<title>אלפון תושבים מתחם הסופרים, בני ברק — רישום למהדורת תשפ״ז</title>
+<meta name="description" content="אלפון התושבים של מתחם הסופרים (שכונת איילת השחר), צפון בני ברק — רחוב 600 שבט הלוי ורחוב 601 חזון עובדיה. הרישום חינם, והמדריך מחולק לכל בית בשכונה. מהדורת תשפ״ז.">
 <meta property="og:title" content="אלפון תושבים — מתחם הסופרים">
 <meta property="og:description" content="הצטרפו לאלפון התושבים של השכונה. מילוי לוקח דקה.">
 <meta property="og:type" content="website">
@@ -135,6 +135,23 @@ legend{
 .choice input:checked + span{color:var(--ink)}
 .choice label:has(input:checked){border-color:var(--gold);background:rgba(201,162,75,.08)}
 
+.streets{
+  border-inline-start:3px solid var(--gold);
+  padding-inline-start:14px;background:rgba(201,162,75,.06);
+  border-radius:0 10px 10px 0;padding-block:10px;
+}
+.faq{margin-top:clamp(38px,6vw,60px);padding-top:clamp(28px,4vw,40px);border-top:1px solid var(--mist-line)}
+.faq h2{font-family:'Secular One',sans-serif;font-weight:400;font-size:clamp(1.5rem,4vw,2rem);color:var(--ink);margin-bottom:6px}
+.qa{margin-top:26px}
+.qa h3{font-family:'Rubik',sans-serif;font-weight:600;font-size:1.05rem;color:var(--ink);margin-bottom:7px;line-height:1.45}
+.qa p{color:var(--muted);line-height:1.75;margin:0 0 8px}
+.qa a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+.edit-note{
+  background:rgba(201,162,75,.09);border:1px dashed rgba(201,162,75,.5);
+  border-radius:10px;padding:11px 14px;font-size:.9rem;color:var(--gold-deep)!important;
+}
+.faq-end{margin-top:30px;padding-top:18px;border-top:1px solid var(--mist-line);color:var(--muted);font-size:.94rem}
+.faq-end a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
 .usenote{
   font-family:'Rubik',sans-serif;font-size:.84rem;color:var(--muted);
   text-align:center;margin-top:4px;
@@ -190,6 +207,9 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
   .btn-gold::after{display:none}
 }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"מה זה האלפון של מתחם הסופרים?","acceptedAnswer":{"@type":"Answer","text":"זו רשימת התושבים של השכונה, שמודפסת במדריך השנתי אקספו הסופרים. יש שמחפשים אותה כאלפון שכונת הסופרים, ויש שקוראים לזה ספר הטלפונים של השכונה — זה אותו דבר."}},{"@type":"Question","name":"אני גר ברחוב 600 (או 601) — לאיזה אלפון אני שייך?","acceptedAnswer":{"@type":"Answer","text":"לאותו אחד. השכונה מורכבת משני הרחובות האלה בלבד: 600 הוא רחוב שבט הלוי, ו-601 הוא רחוב חזון עובדיה. בטופס בוחרים את הרחוב מהרשימה."}},{"@type":"Question","name":"איך נרשמים לאלפון, וכמה זה עולה?","acceptedAnswer":{"@type":"Answer","text":"ממלאים את הטופס בעמוד הזה. הרישום לאלפון התושבים חינם. מי שכבר רשום ורוצה לשנות פרט בוחר עדכון פרטים קיימים באותו טופס."}},{"@type":"Question","name":"בדיוק נכנסנו לדירה. נקבל עותק של המדריך?","acceptedAnswer":{"@type":"Answer","text":"כן. המדריך מחולק לכל בית בשכונה, וגם לכל דירה שמתאכלסת במהלך השנה. אם נכנסתם ולא הגיע עותק — 050-4181682."}},{"@type":"Question","name":"חוץ מטלפונים, מה עוד יש במדריך?","acceptedAnswer":{"@type":"Answer","text":"לצד אלפון התושבים יש בו את המידע הקהילתי של השכונה: רבנות וכשרות, בתי כנסת ומוסדות חינוך, רפואה ועזרה ראשונה, וגמחים."}},{"@type":"Question","name":"אני צריך חשמלאי או אינסטלטור בשכונה. זה נמצא כאן?","acceptedAnswer":{"@type":"Answer","text":"זה הצד השני של המדריך — אלפון העסקים ובעלי המקצוע שנותנים שירות במתחם. בעל עסק שרוצה להופיע שם ימצא את הפרטים והמחירון בדף הבית."}}]}
+</script>
 </head>
 <body>
 <div class="atmo" aria-hidden="true"></div>
@@ -206,10 +226,22 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 <main class="wrap">
   <section class="top-note">
     <span class="kick">מהדורת תשפ״ז</span>
-    <h1>אלפון <span class="goldtx">תושבים</span></h1>
+    <h1>אלפון התושבים של <span class="goldtx">מתחם הסופרים</span></h1>
     <p>
-      אנחנו מרכזים את אלפון התושבים של מתחם הסופרים, צפון בני ברק — לצד אלפון העסקים.
-      המילוי לוקח פחות מדקה — ואתם בפנים.
+      מתחם הסופרים הוא שכונה שעדיין מתאכלסת. משפחות נכנסות כל הזמן,
+      ואין רשימה אחת שמרכזת את כולן — אלפון התושבים נועד בדיוק לזה.
+    </p>
+    <p>
+      הוא מודפס פעם בשנה בתוך <b>אקספו הסופרים</b>, המדריך של השכונה,
+      ומחולק חינם לכל בית. למדריך שני צדדים: אלפון התושבים מצד אחד,
+      ואלפון העסקים ובעלי המקצוע מהצד השני.
+    </p>
+    <p class="streets">
+      כל השכונה היא שני רחובות: <b>600 — שבט הלוי</b>, ו־<b>601 — חזון עובדיה</b>.
+      אם בחוזה רשום מספר ובשלט ברחוב רשום שם — מדובר באותו מקום.
+    </p>
+    <p>
+      הטופס שלמטה הוא כל מה שנדרש. שם, כתובת וטלפון — פחות מדקה.
     </p>
   </section>
 
@@ -308,6 +340,71 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
     <h2>הפרטים מוכנים לשליחה</h2>
     <p>נפתח לכם חלון עם ההודעה המלאה — צריך רק ללחוץ «שלח». אם החלון לא נפתח, אפשר לנסות שוב.</p>
     <div class="again"><button type="button" class="btn btn-line" id="again">מילוי רישום נוסף</button></div>
+  </section>
+
+  <section class="faq">
+    <h2>שאלות שחוזרות</h2>
+
+    <div class="qa">
+      <h3>מה זה האלפון של מתחם הסופרים?</h3>
+      <p>
+        זו רשימת התושבים של השכונה, שמודפסת במדריך השנתי אקספו הסופרים.
+        יש שמחפשים אותה כ״אלפון שכונת הסופרים״, ויש שפשוט קוראים לזה
+        ספר הטלפונים של השכונה — זה אותו דבר.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>אני גר ברחוב 600 (או 601) — לאיזה אלפון אני שייך?</h3>
+      <p>
+        לאותו אחד. השכונה מורכבת משני הרחובות האלה בלבד:
+        <b>600 הוא רחוב שבט הלוי</b>, ו־<b>601 הוא רחוב חזון עובדיה</b>.
+        בטופס פשוט בוחרים את הרחוב מהרשימה.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>איך נרשמים, וכמה זה עולה?</h3>
+      <p>
+        ממלאים את הטופס בעמוד הזה. הרישום לאלפון התושבים חינם.
+        מי שכבר רשום ורוצה לשנות פרט — בוחר ״עדכון פרטים קיימים״ באותו טופס.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>בדיוק נכנסנו לדירה. נקבל עותק של המדריך?</h3>
+      <p>
+        כן. המדריך מחולק לכל בית בשכונה, וגם לכל דירה שמתאכלסת במהלך השנה.
+        אם נכנסתם ולא הגיע אליכם עותק — <span class="num">050-4181682</span>.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>חוץ מטלפונים, מה עוד יש במדריך?</h3>
+      <p>
+        לצד אלפון התושבים יש בו את המידע הקהילתי של השכונה:
+        רבנות וכשרות, בתי כנסת ומוסדות חינוך, רפואה ועזרה ראשונה, וגמ״חים.
+      </p>
+      <p class="edit-note">
+        [ערכו אותי — כאן המקום לפרט מה בדיוק נכלל: זמני תפילות בבית המדרש,
+        שעות המקווה, טלפוני ועדי הבתים, גנים ומכולת. אלה בדיוק הדברים
+        שאנשים מחפשים בגוגל, ואף אחד לא עונה עליהם היום.]
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>אני צריך חשמלאי או אינסטלטור בשכונה. זה נמצא כאן?</h3>
+      <p>
+        זה הצד השני של המדריך — אלפון העסקים ובעלי המקצוע שנותנים שירות במתחם.
+        בעל עסק שרוצה להופיע שם ימצא את הפרטים והמחירון
+        <a href="index.html">בדף הבית</a>.
+      </p>
+    </div>
+
+    <p class="faq-end">
+      לא מצאתם תשובה? <span class="num">050-4181682</span> ·
+      <a href="mailto:eh600601@gmail.com">eh600601@gmail.com</a>
+    </p>
   </section>
 </main>
 
