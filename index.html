@@ -301,9 +301,18 @@ h1,h2,.disp,.hook{font-family:'Secular One',sans-serif;font-weight:400;line-heig
 /* תשלום — ממתין לחיבור סליקה */
 .payrow{margin-top:18px;position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
 .btn-pay{
-  border:1.5px dashed rgba(229,200,120,.55);color:rgba(255,255,255,.75);
-  background:rgba(229,200,120,.06);cursor:not-allowed;pointer-events:none;
+  border:none;color:var(--ink-dark);background:var(--grad-gold);
+  box-shadow:0 10px 26px rgba(201,162,75,.35);
 }
+.btn-pay:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(201,162,75,.45)}
+.tier .paylink{
+  margin-top:10px;display:inline-block;align-self:center;
+  font-family:'Rubik',sans-serif;font-size:.82rem;font-weight:600;
+  color:var(--gold-light);text-decoration:none;
+  border:1px solid rgba(229,200,120,.45);border-radius:999px;padding:5px 14px;
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.tier .paylink:hover{background:var(--gold-light);color:var(--ink-dark);border-color:var(--gold-light)}
 .payrow .soon{
   font-family:'Rubik',sans-serif;font-size:.82rem;color:rgba(255,255,255,.55);
 }
@@ -589,30 +598,35 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
           <span class="name">עמוד שלם</span>
           <span class="dims"><span class="num">17.5×12</span></span>
           <span class="price"><span class="num">1,200</span> ₪</span>
+          <a class="paylink" href="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%D7%9D%20(1%2C200%20%E2%82%AA)" target="_blank" rel="noopener">לתשלום <span aria-hidden="true">›</span></a>
         </li>
         <li class="tier">
           <span class="shape sh-half" aria-hidden="true"></span>
           <span class="name">חצי עמוד</span>
           <span class="dims">לגובה <span class="num">17.5×6</span><br>לרוחב <span class="num">12×8.5</span></span>
           <span class="price"><span class="num">620</span> ₪</span>
+          <a class="paylink" href="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%97%D7%A6%D7%99%20%D7%A2%D7%9E%D7%95%D7%93%20(620%20%E2%82%AA)" target="_blank" rel="noopener">לתשלום <span aria-hidden="true">›</span></a>
         </li>
         <li class="tier">
           <span class="shape sh-quart" aria-hidden="true"></span>
           <span class="name">רבע עמוד</span>
           <span class="dims"><span class="num">8.5×6</span></span>
           <span class="price"><span class="num">380</span> ₪</span>
+          <a class="paylink" href="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A8%D7%91%D7%A2%20%D7%A2%D7%9E%D7%95%D7%93%20(380%20%E2%82%AA)" target="_blank" rel="noopener">לתשלום <span aria-hidden="true">›</span></a>
         </li>
         <li class="tier">
           <span class="shape sh-eighth" aria-hidden="true"></span>
           <span class="name">שמינית עמוד</span>
           <span class="dims"><span class="num">6×4</span></span>
           <span class="price"><span class="num">220</span> ₪</span>
+          <a class="paylink" href="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A9%D7%9E%D7%99%D7%A0%D7%99%D7%AA%20%D7%A2%D7%9E%D7%95%D7%93%20(220%20%E2%82%AA)" target="_blank" rel="noopener">לתשלום <span aria-hidden="true">›</span></a>
         </li>
         <li class="tier">
           <span class="shape sh-line" aria-hidden="true"></span>
           <span class="name">שורה באינדקס</span>
           <span class="dims">קטגוריה · שם · כתובת · טלפון ומייל</span>
           <span class="price"><span class="num">100</span> ₪</span>
+          <a class="paylink" href="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A9%D7%95%D7%A8%D7%94%20%D7%91%D7%90%D7%99%D7%A0%D7%93%D7%A7%D7%A1%20(100%20%E2%82%AA)" target="_blank" rel="noopener">לתשלום <span aria-hidden="true">›</span></a>
         </li>
       </ul>
       <p class="pnote">
@@ -620,11 +634,11 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
         <span class="free">התאמה למדריך — חינם</span>
       </p>
       <div class="payrow">
-        <span class="btn btn-pay" aria-disabled="true">
+        <a class="btn btn-pay" href="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%D7%94%D7%A1%D7%95%D7%A4%D7%A8%D7%99%D7%9D" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 0-5 5v3H6c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 1 1 6 0v3H9z"/></svg>
-          תשלום מאובטח באשראי
-        </span>
-        <span class="soon">יופעל בקרוב, עם חיבור חשבון הסליקה</span>
+          לתשלום מאובטח — נדרים פלוס
+        </a>
+        <span class="soon">אשראי · ביט · העברה בנקאית — בדף המאובטח של נדרים פלוס. אחרי התשלום שלחו את חומרי המודעה במייל או בווטסאפ.</span>
       </div>
       <div class="send-card">
         <div>
