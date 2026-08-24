@@ -40,6 +40,7 @@ var COLUMNS = [
 var TEXT_COLUMNS_FROM = 7;
 var TEXT_COLUMNS_TO   = 13;
 
+
 function doPost(e) {
   var lock = LockService.getScriptLock();
   try {
@@ -63,13 +64,13 @@ function doPost(e) {
       pick(data, 'שם האיש'),
       pick(data, 'שם האשה'),
       pick(data, 'רחוב'),
-      pick(data, 'בניין'),
-      pick(data, 'כניסה'),
-      pick(data, 'קומה'),
-      pick(data, 'דירה'),
-      pick(data, 'טלפון בית'),
-      pick(data, 'טלפון איש'),
-      pick(data, 'טלפון אשה'),
+      pickText(data, 'בניין'),
+      pickText(data, 'כניסה'),
+      pickText(data, 'קומה'),
+      pickText(data, 'דירה'),
+      pickText(data, 'טלפון בית'),
+      pickText(data, 'טלפון איש'),
+      pickText(data, 'טלפון אשה'),
       pick(data, 'מעמד')
     ]);
 
@@ -91,6 +92,12 @@ function doGet() {
 function pick(data, key) {
   var v = data[key];
   return (v === undefined || v === null) ? '' : String(v);
+}
+
+/* כמו pick, אבל מוסיף גרש מוביל כדי שגוגל תשמור את הערך כטקסט */
+function pickText(data, key) {
+  var v = pick(data, key);
+  return v === '' ? '' : "'" + v;
 }
 
 function json(obj) {
