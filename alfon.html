@@ -232,6 +232,10 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
       ומחולק חינם לכל בית. למדריך שני צדדים: אלפון התושבים מצד אחד,
       ואלפון העסקים ובעלי המקצוע מהצד השני.
     </p>
+    <p>
+      המהדורה הקרובה יוצאת לאור <b>לקראת קיץ תשפ״ז</b> — כך שעדיין
+      אפשר להספיק להיכנס אליה.
+    </p>
     <p class="streets">
       כל השכונה היא שני רחובות: <b>600 — שבט הלוי</b>, ו־<b>601 — חזון עובדיה</b>.
       אם בחוזה רשום מספר ובשלט ברחוב רשום שם — מדובר באותו מקום.
@@ -254,9 +258,15 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
       <legend>פרטי המשפחה</legend>
       <div class="grid">
         <div class="field">
-          <label for="fname">שם פרטי</label>
-          <input id="fname" name="שם פרטי" type="text" autocomplete="given-name" required>
+          <label for="fnameM">שם האיש</label>
+          <input id="fnameM" name="שם האיש" type="text" autocomplete="off" required>
         </div>
+        <div class="field">
+          <label for="fnameW">שם האשה</label>
+          <input id="fnameW" name="שם האשה" type="text" autocomplete="off" required>
+        </div>
+      </div>
+      <div class="grid" style="margin-top:14px">
         <div class="field">
           <label for="lname">שם משפחה</label>
           <input id="lname" name="שם משפחה" type="text" autocomplete="family-name" required>
@@ -281,6 +291,10 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
         </div>
       </div>
       <div class="grid four" style="margin-top:14px">
+        <div class="field">
+          <label for="entrance">כניסה</label>
+          <input id="entrance" name="כניסה" type="text" maxlength="3" autocomplete="off">
+        </div>
         <div class="field">
           <label for="floor">קומה</label>
           <input id="floor" name="קומה" class="onlynum" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="3" autocomplete="off" required>
@@ -333,8 +347,8 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 
   <section class="done" id="done">
     <div class="ic" aria-hidden="true">✓</div>
-    <h2>הפרטים מוכנים לשליחה</h2>
-    <p>נפתח לכם חלון עם ההודעה המלאה — צריך רק ללחוץ «שלח». אם החלון לא נפתח, אפשר לנסות שוב.</p>
+    <h2 id="doneTitle">הרישום נקלט</h2>
+    <p id="doneText">הפרטים שלכם נכנסו לאלפון התושבים של מתחם הסופרים. אם יתברר שחסר משהו — נתקשר.</p>
     <div class="again"><button type="button" class="btn btn-line" id="again">מילוי רישום נוסף</button></div>
   </section>
 
@@ -406,6 +420,12 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 <script>
 (function(){
   var WA = '972504181682';
+
+  /* כתובת הגיליון שקולט את הרישומים (Google Apps Script).
+     כל עוד היא ריקה — הרישום נשלח בוואטסאפ, בדיוק כמו קודם. */
+  var ENDPOINT = '';
+  var TOKEN = 'sofrim-alfon-5787';
+
   var f = document.getElementById('f');
   var errBox = document.getElementById('err');
   var done = document.getElementById('done');
@@ -433,8 +453,10 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
 
   function collect(){
     var problems = [];
-    var required = [['fname','שם פרטי'],['lname','שם משפחה'],['street','רחוב'],['building','בניין'],['floor','קומה'],['apt','דירה']];
+    var required = [['lname','שם משפחה'],['street','רחוב'],['building','בניין'],['floor','קומה'],['apt','דירה']];
     required.forEach(function(r){ if (!val(r[0])) problems.push(r[1]); });
+
+    if (!val('fnameM') && !val('fnameW')) problems.push('שם פרטי');
 
     [['building','בניין'],['floor','קומה'],['apt','דירה']].forEach(function(n){
       var v = val(n[0]);
@@ -459,34 +481,101 @@ footer{border-top:1px solid var(--mist-line);padding-block:24px 40px;color:var(-
     errBox.classList.remove('on');
 
     var kind = (f.querySelector('input[name="סוג"]:checked') || {}).value || 'רישום חדש';
+
+    var data = {
+      token: TOKEN,
+      'סוג': kind,
+      'שם משפחה': val('lname'),
+      'שם האיש': val('fnameM'),
+      'שם האשה': val('fnameW'),
+      'רחוב': val('street'),
+      'בניין': val('building'),
+      'כניסה': val('entrance'),
+      'קומה': val('floor'),
+      'דירה': val('apt'),
+      'טלפון בית': val('thome'),
+      'טלפון איש': val('tman'),
+      'טלפון אשה': val('twoman'),
+      'מעמד': status.value
+    };
+
     var lines = [
       kind + ' — אלפון תושבים, מתחם הסופרים',
       '',
-      'שם: ' + val('fname') + ' ' + val('lname'),
-      'כתובת: ' + val('street') + ', בניין ' + val('building') + ', קומה ' + val('floor') + ', דירה ' + val('apt')
+      'שם משפחה: ' + val('lname')
     ];
+    if (val('fnameM')) lines.push('שם האיש: ' + val('fnameM'));
+    if (val('fnameW')) lines.push('שם האשה: ' + val('fnameW'));
+    var addr = 'כתובת: ' + val('street') + ', בניין ' + val('building');
+    if (val('entrance')) addr += ', כניסה ' + val('entrance');
+    lines.push(addr + ', קומה ' + val('floor') + ', דירה ' + val('apt'));
     if (val('thome'))  lines.push('טלפון בבית: ' + val('thome'));
     if (val('tman'))   lines.push('נייד הבעל: ' + val('tman'));
     if (val('twoman')) lines.push('נייד האשה: ' + val('twoman'));
     lines.push('מעמד: ' + status.value);
     lines.push('');
-    return lines.join('\n');
+
+    return { data: data, text: lines.join('\n') };
   }
 
-  function finish(){
+  var doneTitle = document.getElementById('doneTitle');
+  var doneText  = document.getElementById('doneText');
+  var sendBtn   = document.getElementById('send');
+  var sendLabel = sendBtn.innerHTML;
+
+  function finish(title, text){
+    doneTitle.textContent = title;
+    doneText.textContent  = text;
     f.style.display = 'none';
     done.classList.add('on');
     done.scrollIntoView({block:'center', behavior:'smooth'});
   }
 
+  function busy(on){
+    sendBtn.disabled  = on;
+    sendBtn.innerHTML = on ? 'שולח…' : sendLabel;
+  }
+
+  /* מסלול גיבוי: אין חיבור לגיליון, או שהוא לא ענה — שולחים בוואטסאפ */
+  function sendByWhatsapp(text){
+    var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
+    var w = window.open(url, '_blank', 'noopener');
+    finish('הפרטים מוכנים לשליחה',
+           'נפתח לכם חלון וואטסאפ עם ההודעה המלאה — צריך רק ללחוץ «שלח». אם החלון לא נפתח, אפשר לנסות שוב.');
+    if (!w) location.href = url;   // פופ-אפ נחסם — פותחים באותו טאב
+  }
+
   f.addEventListener('submit', function(e){
     e.preventDefault();
-    var body = collect();
-    if (!body) return;
-    var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(body);
-    var w = window.open(url, '_blank', 'noopener');
-    finish();
-    if (!w) location.href = url;   // פופ-אפ נחסם — פותחים באותו טאב
+    var result = collect();
+    if (!result) return;
+
+    if (!ENDPOINT){ sendByWhatsapp(result.text); return; }
+
+    busy(true);
+    var ctrl  = (typeof AbortController === 'function') ? new AbortController() : null;
+    var timer = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 12000);
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      /* text/plain כדי לא להפעיל preflight, שגוגל לא עונה עליו */
+      headers: {'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(result.data),
+      signal: ctrl ? ctrl.signal : undefined
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (!res || !res.ok) throw new Error((res && res.error) || 'rejected');
+      clearTimeout(timer);
+      busy(false);
+      finish('הרישום נקלט',
+             'הפרטים שלכם נכנסו לאלפון התושבים של מתחם הסופרים. אם יתברר שחסר משהו — נתקשר.');
+    })
+    .catch(function(){
+      clearTimeout(timer);
+      busy(false);
+      sendByWhatsapp(result.text);   /* שום רישום לא הולך לאיבוד */
+    });
   });
 
   document.getElementById('again').addEventListener('click', function(){
