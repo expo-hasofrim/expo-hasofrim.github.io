@@ -501,7 +501,10 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 }
 @media (max-width:420px){
   .hero .cta-row .btn,.finale .cta-row .btn{flex:1 1 100%}
-  .tier{flex-basis:44%;max-width:none}
+  /* חצי שורה, ובלי למתוח: חמש דרגות מודעה הן מספר אי-זוגי, והאחרונה
+     נשארת לבד. שתימתח לרוחב מלא והיא נקראת כהמלצה. */
+  .tier{flex-basis:44%;max-width:calc(50% - 7px)}
+  .tier.line{max-width:none}
   .tier .dims{min-height:0}
 }
 @media (prefers-reduced-motion:reduce){
