@@ -320,6 +320,24 @@ h1,h2,.disp,.hook{font-family:'Secular One',sans-serif;font-weight:400;line-heig
 .tier{cursor:pointer;-webkit-user-select:none;user-select:none;position:relative}
 .tier:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .tier.on{border-color:var(--gold);background:rgba(229,200,120,.13);box-shadow:0 18px 44px rgba(0,0,0,.4)}
+
+/* שורה באינדקס אינה מודעה אלא רישום טקסט. שורה משלה תמיד — כדי שלא
+   תיתום בסוף הגריד ותיקרא כהמלצה — ובמשקל חזותי נמוך מהכרטיסים. */
+.tier.line{
+  flex:1 1 100%;max-width:560px;
+  flex-direction:row;align-items:center;justify-content:center;
+  gap:14px;padding:13px 22px;
+  background:transparent;border-color:rgba(255,255,255,.1);
+}
+.tier.line .shape{margin-bottom:0;flex:none}
+.tier.line .name{font-size:1rem;margin-bottom:0}
+.tier.line .dims{min-height:0;margin-top:0}
+.tier.line .price{margin-top:0;padding-top:0;font-size:1.05rem}
+.tier.line:hover{transform:none;box-shadow:none;background:rgba(255,255,255,.04)}
+.tier.line.on::after{top:50%;transform:translateY(-50%)}
+@media (max-width:560px){
+  .tier.line{flex-wrap:wrap;gap:8px;padding:14px 16px}
+}
 .tier.on::after{
   content:"✓";position:absolute;top:10px;inset-inline-start:10px;
   width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
@@ -672,7 +690,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
           <span class="dims"><span class="num">6×4</span></span>
           <span class="price"><span class="num">220</span> ₪</span>
         </li>
-        <li class="tier" data-pay="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A9%D7%95%D7%A8%D7%94%20%D7%91%D7%90%D7%99%D7%A0%D7%93%D7%A7%D7%A1%20(100%20%E2%82%AA)" data-label="שורה באינדקס · 100 ₪" tabindex="0" role="button" aria-pressed="false">
+        <li class="tier line" data-pay="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A9%D7%95%D7%A8%D7%94%20%D7%91%D7%90%D7%99%D7%A0%D7%93%D7%A7%D7%A1%20(100%20%E2%82%AA)" data-label="שורה באינדקס · 100 ₪" tabindex="0" role="button" aria-pressed="false">
           <span class="shape sh-line" aria-hidden="true"></span>
           <span class="name">שורה באינדקס</span>
           <span class="dims">קטגוריה · שם · כתובת · טלפון ומייל</span>
