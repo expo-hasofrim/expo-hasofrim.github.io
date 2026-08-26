@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>חתימת המייל · אקספו הסופרים</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Secular+One&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFBFD; --ink:#1B2A4A; --muted:#5A6478;
+    --gold:#C9A24B; --gold-deep:#8F6A1F; --line:#E0E5EF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'Assistant',system-ui,sans-serif;font-size:17px;line-height:1.7;
+    padding:clamp(20px,5vw,54px);
+  }
+  .wrap{max-width:720px;margin:0 auto}
+  h1{font-family:'Secular One',sans-serif;font-weight:400;font-size:clamp(1.7rem,5vw,2.3rem);line-height:1.2;margin-bottom:10px}
+  .sub{color:var(--muted);margin-bottom:34px}
+  h2{font-family:'Secular One',sans-serif;font-weight:400;font-size:1.25rem;margin:34px 0 12px}
+
+  .stage{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:30px;margin-bottom:18px;
+  }
+  .btn{
+    font-family:'Assistant',sans-serif;font-size:1rem;font-weight:700;
+    background:linear-gradient(115deg,#E9CF83 0%,#C9A24B 48%,#A97F2E 100%);
+    color:#0C1526;border:0;border-radius:10px;padding:14px 30px;cursor:pointer;
+  }
+  .btn:hover{opacity:.9}
+  .btn.done{background:#1B2A4A;color:#fff}
+  .hint{font-size:.92rem;color:var(--muted);margin-top:10px}
+
+  ol{padding-inline-start:22px;display:flex;flex-direction:column;gap:11px}
+  li b{font-weight:800}
+  code{
+    background:#EFF2F8;border:1px solid var(--line);border-radius:5px;
+    padding:1px 7px;font-family:ui-monospace,Consolas,monospace;font-size:.9em;
+    direction:ltr;unicode-bidi:isolate;display:inline-block;
+  }
+  .ui{background:#EFF2F8;border-radius:5px;padding:1px 7px;font-weight:700;white-space:nowrap}
+  .note{
+    background:#FBF3E2;border:1px solid #E2C888;border-radius:10px;
+    padding:14px 18px;margin-top:16px;font-size:.96rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>חתימת המייל של אקספו הסופרים</h1>
+  <p class="sub">לחצו על הכפתור, ואז הדביקו בהגדרות ה־Gmail. ההוראות המלאות למטה.</p>
+
+  <div class="stage">
+    <!-- ===== החתימה עצמה — זה מה שמועתק ===== -->
+    <div id="sig">
+      <table dir="rtl" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#1B2A4A;text-align:right;">
+        <tr>
+          <td style="padding:0 0 12px 0;">
+            <img src="https://expo-hasofrim.github.io/assets/signature-logo.png" width="200" height="110" alt="אקספו הסופרים" style="display:block;border:0;outline:none;text-decoration:none;">
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0 0 10px 0;">
+            <table cellpadding="0" cellspacing="0" border="0"><tr>
+              <td width="118" style="height:3px;line-height:3px;font-size:3px;background-color:#C9A24B;">&nbsp;</td>
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0 0 14px 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#5A6478;">
+            מרכז מידע ועסקים &nbsp;·&nbsp; מתחם הסופרים, בני ברק
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0 0 8px 0;">
+            <a href="https://expo-hasofrim.github.io/" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:#8F6A1F;text-decoration:none;">לאתר האקספו — פרסום במדריך תשפ״ז &nbsp;←</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0 0 16px 0;">
+            <a href="https://expo-hasofrim.github.io/alfon.html" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:#8F6A1F;text-decoration:none;">לאלפון התושבים — רישום ועדכון פרטים &nbsp;←</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#5A6478;">
+            טלפון <span style="color:#1B2A4A;font-weight:bold;">050-4181682</span>
+            &nbsp;·&nbsp;
+            וואטסאפ <span style="color:#1B2A4A;font-weight:bold;">053-8504980</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- ===== סוף החתימה ===== -->
+  </div>
+
+  <button class="btn" id="copy" type="button">העתקת החתימה</button>
+  <p class="hint">מעתיק את החתימה כולה — לוגו, קישורים ועיצוב.</p>
+
+  <h2>איך מכניסים אותה ל־Gmail</h2>
+  <ol>
+    <li>ב־Gmail, לחצו על <span class="ui">גלגל השיניים</span> בפינה ואז <span class="ui">הצגת כל ההגדרות</span>.</li>
+    <li>בלשונית <span class="ui">כללי</span>, גללו למטה עד <span class="ui">חתימה</span>.</li>
+    <li><b>מחקו חתימות ישנות</b> שכבר לא בשימוש — סמנו כל אחת ולחצו על אייקון הפח.</li>
+    <li>לחצו <span class="ui">חדשה</span>, תנו שם (למשל <code>expo</code>) ואשרו.</li>
+    <li>לחצו בתוך תיבת העריכה הגדולה והדביקו עם <code>Ctrl+V</code>.</li>
+    <li>מתחת לתיבה יש שתי רשימות נפתחות. הגדירו את <b>שתיהן</b> לחתימה החדשה:
+      <span class="ui">למיילים חדשים</span> וגם <span class="ui">בתשובה/העברה</span>.</li>
+    <li>סמנו <span class="ui">הוספת החתימה לפני הטקסט המצוטט בתשובות</span> — אחרת היא תיפול לתחתית שרשור ארוך.</li>
+    <li>גללו לתחתית העמוד ולחצו <span class="ui">שמירת שינויים</span>.</li>
+  </ol>
+
+  <div class="note">
+    <b>אפליקציית Gmail בנייד מחזיקה חתימה נפרדת משלה</b>, והיא טקסט בלבד — בלי לוגו.
+    כדאי להגדיר שם ידנית משהו קצר, למשל:<br>
+    <code>אקספו הסופרים | 050-4181682 | expo-hasofrim.github.io</code>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('copy');
+  var sig = document.getElementById('sig');
+
+  function flash(t, ok){
+    btn.textContent = t;
+    if (ok) btn.classList.add('done');
+    setTimeout(function(){ btn.textContent = 'העתקת החתימה'; btn.classList.remove('done'); }, 2600);
+  }
+
+  function selectFallback(){
+    var r = document.createRange();
+    r.selectNodeContents(sig);
+    var s = window.getSelection();
+    s.removeAllRanges(); s.addRange(r);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch(e){}
+    flash(ok ? 'הועתק ✓' : 'סומן — הקישו Ctrl+C', ok);
+  }
+
+  btn.addEventListener('click', function(){
+    if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write){
+      var item = new ClipboardItem({
+        'text/html':  new Blob([sig.innerHTML], {type:'text/html'}),
+        'text/plain': new Blob([sig.innerText], {type:'text/plain'})
+      });
+      navigator.clipboard.write([item]).then(function(){ flash('הועתק ✓', true); }).catch(selectFallback);
+    } else {
+      selectFallback();
+    }
+  });
+})();
+</script>
+</body>
+</html>
