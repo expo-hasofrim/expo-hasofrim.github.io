@@ -1,11 +1,19 @@
 /**
  * אקספו הסופרים — קליטת רישומים לאלפון התושבים
  * ----------------------------------------------
- * הקוד הזה יושב בתוך גיליון גוגל ומקבל את הרישומים מהאתר.
- * כל רישום נכנס כשורה חדשה בגיליון.
+ * גרסה 3 (3.9.26). שינוי מהותי מול הגרסה הקודמת:
+ * הסקריפט **עצמאי** ולא יושב בתוך הגיליון.
  *
- * שלוש שורות שאפשר לשנות נמצאות מיד למטה. כל השאר — לא לגעת.
+ * למה: בגרסה הקודמת הסקריפט היה כבול לגיליון (getActiveSpreadsheet),
+ * וכשגוגל חסמה את הגיליון היא חסמה איתו את כתובת הקליטה — הטופס באתר
+ * החזיר 403 והקליטה מתה. עכשיו הגיליון הוא רק יעד כתיבה. אם הוא ייחסם
+ * שוב, הכתובת תמשיך לענות והרישום עדיין ייתפס במייל.
+ *
+ * ארבע שורות שאפשר לשנות נמצאות מיד למטה. כל השאר — לא לגעת.
  */
+
+/* מזהה הגיליון — החלק הארוך בכתובת שלו, בין /d/ לבין /edit */
+var SHEET_ID = 'PASTE-SHEET-ID-HERE';
 
 /* המייל שיקבל התראה על כל רישום. השאירו ריק ('') כדי לבטל התראות. */
 var NOTIFY_EMAIL = 'eh600601@gmail.com';
@@ -56,26 +64,39 @@ function doPost(e) {
       return json({ ok: false, error: 'bad token' });
     }
 
-    var sheet = getSheet();
-    sheet.appendRow([
-      new Date(),
-      pick(data, 'סוג'),
-      pick(data, 'שם משפחה'),
-      pick(data, 'שם האיש'),
-      pick(data, 'שם האשה'),
-      pick(data, 'רחוב'),
-      pickText(data, 'בניין'),
-      pickText(data, 'כניסה'),
-      pickText(data, 'קומה'),
-      pickText(data, 'דירה'),
-      pickText(data, 'טלפון בית'),
-      pickText(data, 'טלפון איש'),
-      pickText(data, 'טלפון אשה'),
-      pick(data, 'מעמד')
-    ]);
+    /* הכתיבה לגיליון והמייל הם שני נתיבים נפרדים בכוונה.
+       מספיק שאחד מהם הצליח כדי שהרישום לא ילך לאיבוד. */
+    var wrote = false;
+    var sheetError = '';
+    try {
+      getSheet().appendRow([
+        new Date(),
+        pick(data, 'סוג'),
+        pick(data, 'שם משפחה'),
+        pick(data, 'שם האיש'),
+        pick(data, 'שם האשה'),
+        pick(data, 'רחוב'),
+        pickText(data, 'בניין'),
+        pickText(data, 'כניסה'),
+        pickText(data, 'קומה'),
+        pickText(data, 'דירה'),
+        pickText(data, 'טלפון בית'),
+        pickText(data, 'טלפון איש'),
+        pickText(data, 'טלפון אשה'),
+        pick(data, 'מעמד')
+      ]);
+      wrote = true;
+    } catch (err) {
+      sheetError = String(err);
+    }
 
-    notify(data);
-    return json({ ok: true });
+    var mailed = notify(data, sheetError);
+
+    /* רק אם שניהם נפלו נכשל הרישום — ואז הטופס באתר נופל לוואטסאפ */
+    if (!wrote && !mailed) {
+      return json({ ok: false, error: 'sheet and mail both failed: ' + sheetError });
+    }
+    return json({ ok: true, sheet: wrote, mail: mailed });
 
   } catch (err) {
     return json({ ok: false, error: String(err) });
@@ -84,9 +105,16 @@ function doPost(e) {
   }
 }
 
-/* פתיחת הכתובת בדפדפן מחזירה הודעה — כך בודקים שהחיבור חי */
+/* פתיחת הכתובת בדפדפן מחזירה מצב — כך בודקים שהחיבור חי */
 function doGet() {
-  return json({ ok: true, msg: 'Expo HaSofrim alfon endpoint is live' });
+  var reach = 'unknown';
+  try {
+    getSheet();
+    reach = 'ok';
+  } catch (err) {
+    reach = 'unreachable';
+  }
+  return json({ ok: true, msg: 'Expo HaSofrim alfon endpoint is live', sheet: reach });
 }
 
 function pick(data, key) {
@@ -107,7 +135,7 @@ function json(obj) {
 }
 
 function getSheet() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var ss = SpreadsheetApp.openById(SHEET_ID);
   var sh = ss.getSheetByName(SHEET_NAME);
   if (!sh) sh = ss.insertSheet(SHEET_NAME);
 
@@ -122,15 +150,26 @@ function getSheet() {
     var width = TEXT_COLUMNS_TO - TEXT_COLUMNS_FROM + 1;
     sh.getRange(1, TEXT_COLUMNS_FROM, sh.getMaxRows(), width).setNumberFormat('@');
     sh.getRange(1, 1, sh.getMaxRows(), 1).setNumberFormat('dd/MM/yyyy HH:mm');
+    sh.setColumnWidths(1, 6, 118);
+    sh.setColumnWidths(7, 4, 65);
   }
   return sh;
 }
 
-function notify(data) {
-  if (!NOTIFY_EMAIL) return;
+/* מחזיר true אם המייל יצא. הוא רשת הביטחון של הרישום, לא קישוט. */
+function notify(data, sheetError) {
+  if (!NOTIFY_EMAIL) return false;
   try {
     var name = (pick(data, 'שם האיש') || pick(data, 'שם האשה')) + ' ' + pick(data, 'שם משפחה');
-    var body = [
+    var lines = [];
+
+    if (sheetError) {
+      lines.push('⚠️ הרישום הזה לא נכנס לגיליון — שמרו את המייל הזה.');
+      lines.push('הסיבה: ' + sheetError);
+      lines.push('');
+    }
+
+    lines = lines.concat([
       pick(data, 'סוג') + ' — אלפון תושבים, מתחם הסופרים',
       '',
       'שם משפחה: ' + pick(data, 'שם משפחה'),
@@ -142,13 +181,14 @@ function notify(data) {
       'טלפון בבית: ' + (pick(data, 'טלפון בית') || '—'),
       'נייד הבעל: ' + (pick(data, 'טלפון איש') || '—'),
       'נייד האשה: ' + (pick(data, 'טלפון אשה') || '—'),
-      'מעמד: ' + pick(data, 'מעמד'),
-      '',
-      'הרישום נשמר בגיליון: ' + SpreadsheetApp.getActiveSpreadsheet().getUrl()
-    ].join('\n');
+      'מעמד: ' + pick(data, 'מעמד')
+    ]);
 
-    MailApp.sendEmail(NOTIFY_EMAIL, 'רישום לאלפון — ' + name, body);
+    MailApp.sendEmail(NOTIFY_EMAIL,
+      (sheetError ? '⚠️ ' : '') + 'רישום לאלפון — ' + name,
+      lines.join('\n'));
+    return true;
   } catch (ignore) {
-    /* מייל שנכשל לא יפיל את הרישום עצמו */
+    return false;
   }
 }
