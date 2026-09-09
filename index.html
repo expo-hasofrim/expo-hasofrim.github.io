@@ -290,11 +290,12 @@ h1,h2,.disp,.hook{font-family:'Secular One',sans-serif;font-weight:400;line-heig
   border-radius:999px;padding:3px 13px;
 }
 .tier .shape{display:inline-block;background:rgba(229,200,120,.14);border:1.5px solid var(--gold-light);border-radius:3px;margin-bottom:12px}
-.sh-full{width:26px;height:38px}
-.sh-half{width:13px;height:38px}
-.sh-third{width:26px;height:13px}
-.sh-quart{width:22px;height:15px}
-.sh-eighth{width:15px;height:10px}
+/* הצורות משורטטות בקנה מידה אחיד של 0.2px למ״מ, כך שהיחס ביניהן אמיתי */
+.sh-full{width:26px;height:36px}
+.sh-half{width:12px;height:36px}
+.sh-third{width:26px;height:11px}
+.sh-quart{width:12px;height:18px}
+.sh-eighth{width:12px;height:8px}
 .tier .sh-line{width:34px;height:6px;border-radius:2px;background:var(--grad-gold);border:none}
 .tier .name{display:block;font-weight:700;font-size:1.24rem;color:#fff;margin-bottom:2px}
 .tier .dims{display:block;font-family:'Rubik',sans-serif;font-size:.8rem;color:rgba(255,255,255,.6);margin-top:2px;min-height:2.4em}
@@ -660,37 +661,37 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
 
     <section class="dark-card pricing rv">
       <h2>מחירון <span class="goldtx">מהדורת תשפ״ז</span></h2>
-      <p class="sec-sub">מחירי היכרות למהדורה הראשונה · המידות בס״מ</p>
+      <p class="sec-sub">מחירי היכרות למהדורה הראשונה · המידות במ״מ</p>
       <ul class="tiers stag rv">
         <li class="tier star" data-pay="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%D7%9D%20(1%2C200%20%E2%82%AA)" data-label="עמוד שלם · 1,200 ₪" tabindex="0" role="button" aria-pressed="false">
           <span class="badge">הכי בולט</span>
           <span class="shape sh-full" aria-hidden="true"></span>
           <span class="name">עמוד שלם</span>
-          <span class="dims"><span class="num">17.5×12</span></span>
+          <span class="dims"><span class="num">180×130</span></span>
           <span class="price"><span class="num">1,200</span> ₪</span>
         </li>
         <li class="tier" data-pay="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%97%D7%A6%D7%99%20%D7%A2%D7%9E%D7%95%D7%93%20(620%20%E2%82%AA)" data-label="חצי עמוד · 620 ₪" tabindex="0" role="button" aria-pressed="false">
           <span class="shape sh-half" aria-hidden="true"></span>
           <span class="name">חצי עמוד</span>
-          <span class="dims">לגובה <span class="num">17.5×6</span><br>לרוחב <span class="num">12×8.5</span></span>
+          <span class="dims">לגובה <span class="num">180×62</span><br>לרוחב <span class="num">130×87.5</span></span>
           <span class="price"><span class="num">620</span> ₪</span>
         </li>
         <li class="tier" data-pay="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A9%D7%9C%D7%99%D7%A9%20%D7%A2%D7%9E%D7%95%D7%93%20(500%20%E2%82%AA)" data-label="שליש עמוד · 500 ₪" tabindex="0" role="button" aria-pressed="false">
           <span class="shape sh-third" aria-hidden="true"></span>
           <span class="name">שליש עמוד</span>
-          <span class="dims">לרוחב <span class="num">12×5.8</span></span>
+          <span class="dims">לרוחב <span class="num">130×55</span></span>
           <span class="price"><span class="num">500</span> ₪</span>
         </li>
         <li class="tier" data-pay="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A8%D7%91%D7%A2%20%D7%A2%D7%9E%D7%95%D7%93%20(380%20%E2%82%AA)" data-label="רבע עמוד · 380 ₪" tabindex="0" role="button" aria-pressed="false">
           <span class="shape sh-quart" aria-hidden="true"></span>
           <span class="name">רבע עמוד</span>
-          <span class="dims"><span class="num">8.5×6</span></span>
+          <span class="dims">לגובה <span class="num">87.5×62</span></span>
           <span class="price"><span class="num">380</span> ₪</span>
         </li>
         <li class="tier" data-pay="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A9%D7%9E%D7%99%D7%A0%D7%99%D7%AA%20%D7%A2%D7%9E%D7%95%D7%93%20(220%20%E2%82%AA)" data-label="שמינית עמוד · 220 ₪" tabindex="0" role="button" aria-pressed="false">
           <span class="shape sh-eighth" aria-hidden="true"></span>
           <span class="name">שמינית עמוד</span>
-          <span class="dims"><span class="num">6×4</span></span>
+          <span class="dims">לרוחב <span class="num">62×41</span></span>
           <span class="price"><span class="num">220</span> ₪</span>
         </li>
         <li class="tier line" data-pay="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A9%D7%95%D7%A8%D7%94%20%D7%91%D7%90%D7%99%D7%A0%D7%93%D7%A7%D7%A1%20(100%20%E2%82%AA)" data-label="שורה באינדקס · 100 ₪" tabindex="0" role="button" aria-pressed="false">
