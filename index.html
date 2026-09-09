@@ -507,6 +507,20 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
   .tier{flex-basis:44%;max-width:calc(50% - 7px)}
   .tier.line{max-width:none}
   .tier .dims{min-height:0}
+  /* בנייד בלבד: השמינית מקבלת שורה שטוחה משלה, באותו טיפול של שורת
+     האינדקס. בדסקטופ חמש הדרגות נכנסות לשורה אחת והיא כרטיס רגיל. */
+  .tier.eighth{
+    flex:1 1 100%;max-width:none;
+    flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center;
+    gap:8px;padding:14px 16px;
+    background:transparent;border-color:rgba(255,255,255,.1);
+  }
+  .tier.eighth .shape{margin-bottom:0;flex:none}
+  .tier.eighth .name{font-size:1rem;margin-bottom:0}
+  .tier.eighth .dims{margin-top:0}
+  .tier.eighth .price{margin-top:0;padding-top:0;font-size:1.05rem}
+  .tier.eighth:hover{transform:none;box-shadow:none;background:rgba(255,255,255,.04)}
+  .tier.eighth.on::after{top:50%;transform:translateY(-50%)}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -688,7 +702,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-betwe
           <span class="dims">לגובה <span class="num">87.5×62</span></span>
           <span class="price"><span class="num">380</span> ₪</span>
         </li>
-        <li class="tier" data-pay="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A9%D7%9E%D7%99%D7%A0%D7%99%D7%AA%20%D7%A2%D7%9E%D7%95%D7%93%20(220%20%E2%82%AA)" data-label="שמינית עמוד · 220 ₪" tabindex="0" role="button" aria-pressed="false">
+        <li class="tier eighth" data-pay="https://www.matara.pro/nedarimplus/online/?mosad=7018890&Avour=%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%91%D7%90%D7%A7%D7%A1%D7%A4%D7%95%20%E2%80%94%20%D7%A9%D7%9E%D7%99%D7%A0%D7%99%D7%AA%20%D7%A2%D7%9E%D7%95%D7%93%20(220%20%E2%82%AA)" data-label="שמינית עמוד · 220 ₪" tabindex="0" role="button" aria-pressed="false">
           <span class="shape sh-eighth" aria-hidden="true"></span>
           <span class="name">שמינית עמוד</span>
           <span class="dims">לרוחב <span class="num">62×41</span></span>
